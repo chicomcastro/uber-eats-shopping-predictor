@@ -1,4 +1,5 @@
 const { promises: fsPromises } = require("fs");
+const moment = require("moment");
 const pdf = require("pdf-parse");
 
 async function getFiles(path) {
@@ -127,15 +128,15 @@ function parseRecibo(texto) {
   };
 }
 
-async function main() {
-  const files = await getFiles("./src/input");
-  console.log(files);
-
+async function parseProducts(files) {
+  const results = [];
   for (const file of files) {
     console.log("\n\n--------------------------------");
     console.log(`Lendo arquivo: ${file}`);
     const texto = await extractText(`./src/input/${file}`);
     const resultado = parseRecibo(texto);
+
+    results.push(resultado);
 
     console.log("Data:", resultado.data);
     console.log("Total:", resultado.total);
@@ -160,6 +161,35 @@ async function main() {
       }
     });
   }
+
+  return results;
+}
+
+function parseRows(results) {
+  return results.map((result) => {
+    return result.produtos.map((produto) => {
+      return {
+        data: moment(result.data, "D m YYYY").format("YYYY-MM-DD"),
+        produto: produto.nome,
+        quantidade: produto.quantidade,
+        precoTotal: produto.precoTotal,
+        precoTotalCents: produto.precoTotal * 100,
+      };
+    });
+  }).flat();
+}
+
+async function main() {
+  const files = await getFiles("./src/input");
+  console.log(files);
+
+  const results = await parseProducts(files);
+  console.log(results);
+
+  const rows = parseRows(results);
+
+  console.log(rows);
 }
 
 main();
+
