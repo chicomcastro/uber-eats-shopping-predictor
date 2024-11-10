@@ -1,6 +1,7 @@
 const { promises: fsPromises } = require("fs");
 const moment = require("moment");
 const pdf = require("pdf-parse");
+const { v4: uuidv4 } = require("uuid");
 
 async function getFiles(path) {
   try {
@@ -14,117 +15,119 @@ async function getFiles(path) {
 async function extractText(path) {
   try {
     if (!path.toLowerCase().endsWith(".pdf")) {
-      throw new Error("Arquivo não é um PDF");
+      throw new Error("File is not a PDF");
     }
 
     const dataBuffer = await fsPromises.readFile(path);
     const data = await pdf(dataBuffer);
     return data.text;
   } catch (err) {
-    console.error("Erro ao ler o PDF:", err);
+    console.error("Error reading PDF:", err);
     return "";
   }
 }
 
-class Produto {
+class Product {
   constructor({
-    quantidade,
-    nome,
-    precoUnitario,
-    precoTotal,
-    peso = null,
-    precoPorKg = null,
-    substituido = null,
-    esgotado = false,
+    quantity,
+    name,
+    unitPrice,
+    totalPrice,
+    weight = null,
+    pricePerKg = null,
+    substituted = null,
+    outOfStock = false,
   }) {
-    this.quantidade = quantidade;
-    this.nome = nome;
-    this.precoUnitario = precoUnitario;
-    this.precoTotal = precoTotal;
-    this.peso = peso;
-    this.precoPorKg = precoPorKg;
-    this.substituido = substituido;
-    this.esgotado = esgotado;
+    this.id = uuidv4();
+    this.quantity = quantity;
+    this.name = name;
+    this.unitPrice = unitPrice;
+    this.totalPrice = totalPrice;
+    this.weight = weight;
+    this.pricePerKg = pricePerKg;
+    this.substituted = substituted;
+    this.outOfStock = outOfStock;
   }
 }
 
-function parseRecibo(texto) {
-  // Extrair data
-  const dataMatch = texto.match(/(\d+) de (\w+) de (\d{4})/);
-  const data = `${dataMatch[1]} ${dataMatch[2]} ${dataMatch[3]}`;
+function parseReceipt(text) {
+  // Extract date
+  const dateMatch = text.match(/(\d+) de (\w+) de (\d{4})/);
+  const date = `${dateMatch[1]} ${dateMatch[2]} ${dateMatch[3]}`;
 
-  // Extrair valor total
-  const totalMatch = texto.match(/TotalR\$ ([\d,]+)/);
+  // Extract total value
+  const totalMatch = text.match(/TotalR\$ ([\d,]+)/);
   const total = parseFloat(totalMatch[1].replace(",", "."));
 
-  const produtos = [];
-  const linhas = texto.split("\n");
+  const products = [];
+  const lines = text.split("\n");
 
-  for (let i = 0; i < linhas.length; i++) {
-    const linha = linhas[i].trim();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
 
-    // Procurar por padrão de quantidade e produto
-    const quantidadeMatch = linha.match(/^(\d+)$/);
-    if (quantidadeMatch) {
-      const quantidade = parseInt(quantidadeMatch[1]);
+    // Look for quantity and product pattern
+    const quantityMatch = line.match(/^(\d+)$/);
+    if (quantityMatch) {
+      const quantity = parseInt(quantityMatch[1]);
       i++;
 
-      const produtoInfo = linhas[i].trim();
-      const precoMatch = produtoInfo.match(/R\$ ([\d,]+)/);
+      const productInfo = lines[i].trim();
+      const priceMatch = productInfo.match(/R\$ ([\d,]+)/);
 
-      if (precoMatch) {
-        const precoTotal = parseFloat(precoMatch[1].replace(",", "."));
+      if (priceMatch) {
+        const totalPrice = parseFloat(priceMatch[1].replace(",", "."));
 
-        // Extrair preço unitário da próxima linha
+        // Extract unit price from next line
         i += 2;
-        const precoUnitMatch = linhas[i].trim().match(/R\$ ([\d,]+)\/pc/);
-        const precoUnitario = precoUnitMatch
-          ? parseFloat(precoUnitMatch[1].replace(",", "."))
+        const unitPriceMatch = lines[i].trim().match(/R\$ ([\d,]+)\/pc/);
+        const unitPrice = unitPriceMatch
+          ? parseFloat(unitPriceMatch[1].replace(",", "."))
           : null;
 
-        // Verificar se é produto por peso
-        let peso = null;
-        let precoPorKg = null;
-        if (linhas[i].toLowerCase().includes("kg")) {
-          const pesoMatch = linhas[i].match(/Final ([\d,]+) kg/);
-          if (pesoMatch) {
-            peso = parseFloat(pesoMatch[1].replace(",", "."));
+        // Check if product is sold by weight
+        let weight = null;
+        let pricePerKg = null;
+        if (lines[i].toLowerCase().includes("kg")) {
+          const weightMatch = lines[i].match(/Final ([\d,]+) kg/);
+          if (weightMatch) {
+            weight = parseFloat(weightMatch[1].replace(",", "."));
           }
-          const precoKgMatch = linhas[i].match(/R\$ ([\d,]+)\/kg/);
-          if (precoKgMatch) {
-            precoPorKg = parseFloat(precoKgMatch[1].replace(",", "."));
+          const priceKgMatch = lines[i].match(/R\$ ([\d,]+)\/kg/);
+          if (priceKgMatch) {
+            pricePerKg = parseFloat(priceKgMatch[1].replace(",", "."));
           }
         }
 
-        // Verificar se produto foi substituído
-        let substituido = null;
-        if (i + 1 < linhas.length && linhas[i + 1].includes("Substituído")) {
-          substituido = linhas[i + 1].replace("Substituído", "").trim();
+        // Check if product was substituted
+        let substituted = null;
+        if (i + 1 < lines.length && lines[i + 1].includes("Substituído")) {
+          substituted = lines[i + 1].replace("Substituído", "").trim();
         }
 
-        // Verificar se produto está esgotado
-        const esgotado = produtoInfo.includes("Esgotado");
+        // Check if product is out of stock
+        const outOfStock = productInfo.includes("Esgotado");
 
-        const produto = new Produto({
-          quantidade,
-          nome: produtoInfo.split("R$")[0].trim(),
-          precoUnitario,
-          precoTotal,
-          peso,
-          precoPorKg,
-          substituido,
-          esgotado,
+        const product = new Product({
+          quantity,
+          name: productInfo.split("R$")[0].trim(),
+          unitPrice,
+          totalPrice,
+          weight,
+          pricePerKg,
+          substituted,
+          outOfStock,
         });
 
-        produtos.push(produto);
+        products.push(product);
       }
     }
   }
 
   return {
-    data,
+    id: uuidv4(),
+    date,
     total,
-    produtos,
+    products,
   };
 }
 
@@ -132,32 +135,32 @@ async function parseProducts(files) {
   const results = [];
   for (const file of files) {
     console.log("\n\n--------------------------------");
-    console.log(`Lendo arquivo: ${file}`);
-    const texto = await extractText(`./src/input/${file}`);
-    const resultado = parseRecibo(texto);
+    console.log(`Reading file: ${file}`);
+    const text = await extractText(`./src/input/${file}`);
+    const result = parseReceipt(text);
 
-    results.push(resultado);
+    results.push(result);
 
-    console.log("Data:", resultado.data);
-    console.log("Total:", resultado.total);
-    console.log("\nProdutos:");
-    resultado.produtos.forEach((produto) => {
+    console.log("Date:", result.date);
+    console.log("Total:", result.total);
+    console.log("\nProducts:");
+    result.products.forEach((product) => {
       console.log("\n-------------------");
-      console.log(`Quantidade: ${produto.quantidade}`);
-      console.log(`Produto: ${produto.nome}`);
-      console.log(`Preço unitário: R$ ${produto.precoUnitario}`);
-      console.log(`Preço total: R$ ${produto.precoTotal}`);
-      if (produto.peso) {
-        console.log(`Peso: ${produto.peso}kg`);
+      console.log(`Quantity: ${product.quantity}`);
+      console.log(`Product: ${product.name}`);
+      console.log(`Unit price: R$ ${product.unitPrice}`);
+      console.log(`Total price: R$ ${product.totalPrice}`);
+      if (product.weight) {
+        console.log(`Weight: ${product.weight}kg`);
       }
-      if (produto.precoPorKg) {
-        console.log(`Preço por kg: R$ ${produto.precoPorKg}`);
+      if (product.pricePerKg) {
+        console.log(`Price per kg: R$ ${product.pricePerKg}`);
       }
-      if (produto.substituido) {
-        console.log(`Substituído por: ${produto.substituido}`);
+      if (product.substituted) {
+        console.log(`Substituted by: ${product.substituted}`);
       }
-      if (produto.esgotado) {
-        console.log("Produto esgotado");
+      if (product.outOfStock) {
+        console.log("Product out of stock");
       }
     });
   }
@@ -167,13 +170,15 @@ async function parseProducts(files) {
 
 function parseRows(results) {
   return results.map((result) => {
-    return result.produtos.map((produto) => {
+    return result.products.map((product) => {
       return {
-        data: moment(result.data, "D m YYYY").format("YYYY-MM-DD"),
-        produto: produto.nome,
-        quantidade: produto.quantidade,
-        precoTotal: produto.precoTotal,
-        precoTotalCents: produto.precoTotal * 100,
+        purchaseId: result.id,
+        purchaseProductId: product.id,
+        date: moment(result.date, "D m YYYY").format("YYYY-MM-DD"),
+        productName: product.name,
+        quantity: product.quantity,
+        totalPrice: product.totalPrice,
+        totalPriceCents: product.totalPrice * 100,
       };
     });
   }).flat();
@@ -188,7 +193,12 @@ async function main() {
 
   const rows = parseRows(results);
 
-  console.log(rows);
+  const distinctRows = rows.filter(
+    (row, index, self) =>
+      index === self.findIndex((t) => t.productName === row.productName)
+  );
+
+  console.log(distinctRows);
 }
 
 main();
