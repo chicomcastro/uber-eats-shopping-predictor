@@ -179,26 +179,81 @@ function parseRows(results) {
         quantity: product.quantity,
         totalPrice: product.totalPrice,
         totalPriceCents: product.totalPrice * 100,
+        unitPrice: product.unitPrice,
+        weight: product.weight,
+        pricePerKg: product.pricePerKg,
+        substituted: product.substituted,
+        outOfStock: product.outOfStock,
       };
     });
   }).flat();
 }
 
+function fillProductIds(rows, distinctProductsMap) {
+  return rows.map((row) => {
+    const product = distinctProductsMap.find((p) => p.productName === row.productName);
+    return { ...row, productId: product.productId };
+  });
+}
+
+function parseProductMetrics(rows) {
+  return rows.reduce((acc, row) => {
+    if (!acc[row.productId]) {
+      acc[row.productId] = {
+        productName: row.productName,
+        totalInCents: 0,
+        quantity: 0,
+        purchases: [],
+        purchaseCount: 0,
+      };
+    }
+
+    acc[row.productId].totalInCents = Math.round(
+      (acc[row.productId]?.totalInCents || 0) + row.totalPriceCents
+    );
+
+    acc[row.productId].quantity += row.quantity;
+
+    acc[row.productId].purchases.push(row.purchaseId);
+
+    acc[row.productId].purchaseCount += 1;
+
+    return acc;
+  }, {});
+}
+
 async function main() {
   const files = await getFiles("./src/input");
-  console.log(files);
 
   const results = await parseProducts(files);
-  console.log(results);
 
   const rows = parseRows(results);
 
-  const distinctRows = rows.filter(
+  const distinctProducts = rows.filter(
     (row, index, self) =>
       index === self.findIndex((t) => t.productName === row.productName)
   );
 
-  console.log(distinctRows);
+  const distinctProductsMap = distinctProducts.map((product) => {
+    return {
+      productName: product.productName,
+      productId: uuidv4(),
+    };
+  });
+
+  const rowsWithProductIds = fillProductIds(rows, distinctProductsMap);
+
+  await fsPromises.writeFile(
+    "./src/output/rows.json",
+    JSON.stringify(rowsWithProductIds, null, 2)
+  );
+
+  const productMetrics = parseProductMetrics(rowsWithProductIds);
+
+  await fsPromises.writeFile(
+    "./src/output/productMetrics.json",
+    JSON.stringify(productMetrics, null, 2)
+  );
 }
 
 main();
