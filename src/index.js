@@ -188,7 +188,7 @@ async function parsePurchases(files) {
     });
   }
 
-  return results;
+  return results.sort((a, b) => moment(a.date).diff(moment(b.date)));
 }
 
 function parsePurchaseProducts(purchases) {
@@ -209,7 +209,7 @@ function parsePurchaseProducts(purchases) {
         outOfStock: product.outOfStock,
       };
     });
-  }).flat();
+  }).flat().sort((a, b) => moment(a.date).diff(moment(b.date)));
 }
 
 function fillProductIds(rows, distinctProductsMap) {
@@ -219,11 +219,11 @@ function fillProductIds(rows, distinctProductsMap) {
   });
 }
 
-function parseProductMetrics(rows) {
-  return rows.reduce((acc, row) => {
-    if (!acc[row.productId]) {
-      acc[row.productId] = {
-        productName: row.productName,
+function parseProductMetrics(purchaseProducts) {
+  return purchaseProducts.reduce((acc, purchaseProduct) => {
+    if (!acc[purchaseProduct.productId]) {
+      acc[purchaseProduct.productId] = {
+        productName: purchaseProduct.productName,
         totalInCents: 0,
         quantity: 0,
         purchases: [],
@@ -233,26 +233,61 @@ function parseProductMetrics(rows) {
       };
     }
 
-    acc[row.productId].totalInCents = Math.round(
-      (acc[row.productId]?.totalInCents || 0) + row.totalPriceCents
+    acc[purchaseProduct.productId].totalInCents = Math.round(
+      (acc[purchaseProduct.productId]?.totalInCents || 0) + purchaseProduct.totalPriceCents
     );
 
-    acc[row.productId].quantity += row.quantity;
+    acc[purchaseProduct.productId].quantity += purchaseProduct.quantity;
 
-    acc[row.productId].purchases.push(row.purchaseId);
+    acc[purchaseProduct.productId].purchases.push(purchaseProduct.purchaseId);
 
-    acc[row.productId].purchaseCount += 1;
+    acc[purchaseProduct.productId].purchaseCount += 1;
 
-    acc[row.productId].averagePrice = acc[row.productId].totalInCents / acc[row.productId].quantity;
+    acc[purchaseProduct.productId].averagePrice = acc[purchaseProduct.productId].totalInCents / acc[purchaseProduct.productId].quantity;
 
-    acc[row.productId].averageDaysBetweenPurchases = acc[row.productId].purchases.reduce((acc, purchaseId, index, self) => {
+    acc[purchaseProduct.productId].averageDaysBetweenPurchases = acc[purchaseProduct.productId].purchases.reduce((acc, purchaseId, index, self) => {
       if (index === 0) return 0;
-      const previousPurchase = self[index - 1];
-      return acc + moment(row.date).diff(moment(previousPurchase.date), "days");
-    }, 0) / (acc[row.productId].purchaseCount - 1);
+      const previousPurchase = purchaseProducts
+        .filter((p) => p.productId === purchaseProduct.productId && moment(p.date) < moment(purchaseProduct.date))
+        .sort((a, b) => moment(b.date).diff(moment(a.date)))[0];
+      return acc + moment(purchaseProduct.date).diff(moment(previousPurchase.date), "days");
+    }, 0) / (acc[purchaseProduct.productId].purchaseCount - 1);
 
     return acc;
   }, {});
+}
+
+function predictNextPurchaseProducts(productMetrics, lastPurchaseDate) {
+  // Convert metrics object to array for easier manipulation
+  const productsArray = Object.entries(productMetrics).map(([productId, metrics]) => ({
+    productId,
+    ...metrics,
+    daysSinceLastPurchase: moment().diff(moment(lastPurchaseDate), 'days')
+  }));
+
+  // Filter and sort products based on purchase frequency and time since last purchase
+  const likelyProducts = productsArray
+    .filter(product => 
+      // Filter out products with less than 2 purchases (to have meaningful averages)
+      product.purchaseCount >= 2 &&
+      // Filter products where time since last purchase is close to or exceeds average frequency
+      product.daysSinceLastPurchase >= (product.averageDaysBetweenPurchases * 0.8)
+    )
+    .sort((a, b) => {
+      // Sort by how overdue the product is compared to its average purchase frequency
+      const aOverdueRatio = a.daysSinceLastPurchase / a.averageDaysBetweenPurchases;
+      const bOverdueRatio = b.daysSinceLastPurchase / b.averageDaysBetweenPurchases;
+      return bOverdueRatio - aOverdueRatio;
+    })
+    .map(product => ({
+      name: product.productName,
+      averagePurchaseFrequency: Math.round(product.averageDaysBetweenPurchases),
+      daysSinceLastPurchase: product.daysSinceLastPurchase,
+      averageQuantityPerPurchase: Math.round(product.quantity / product.purchaseCount * 100) / 100,
+      averagePriceInReais: Math.round(product.averagePrice) / 100
+    }));
+
+  return likelyProducts;
 }
 
 async function main() {
@@ -282,7 +317,7 @@ async function main() {
   const purchaseProductsWithProductId = fillProductIds(purchaseProducts, distinctProductsMap);
 
   await fsPromises.writeFile(
-    "./src/output/rows.json",
+    "./src/output/purchaseProducts.json",
     JSON.stringify(purchaseProductsWithProductId, null, 2)
   );
 
@@ -306,6 +341,16 @@ async function main() {
   const nextPurchaseDate = lastPurchaseDate.add(averageDaysBetweenPurchases, 'days').format('YYYY-MM-DD');
 
   console.log("Next purchase date:", nextPurchaseDate);
+
+  const suggestedProducts = predictNextPurchaseProducts(productMetrics, purchases[purchases.length - 1].date);
+  console.log("\nSuggested products for next purchase:");
+  suggestedProducts.forEach((product, index) => {
+    console.log(`\n${index + 1}. ${product.name}`);
+    console.log(`   Average purchase frequency: every ${product.averagePurchaseFrequency} days`);
+    console.log(`   Days since last purchase: ${product.daysSinceLastPurchase} days`);
+    console.log(`   Typical quantity: ${product.averageQuantityPerPurchase}`);
+    console.log(`   Average price: R$ ${product.averagePriceInReais.toFixed(2)}`);
+  });
 }
 
 main();
