@@ -103,7 +103,7 @@ MIT License
 
 ## Contributing
 
-Contributions are welcome! Please see the CONTRIBUTING.md file for details.
+Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/chicomcastro/uber-eats-shopping-predictor/blob/main/CONTRIBUTING.md) file for details.
 
 ## Author
 
