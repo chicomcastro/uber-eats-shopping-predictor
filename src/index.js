@@ -348,6 +348,11 @@ async function main() {
     };
   });
 
+  await fsPromises.writeFile(
+    "./src/output/distinctProducts.json",
+    JSON.stringify(distinctProductsMap, null, 2)
+  );
+
   const purchaseProductsWithProductId = fillProductIds(purchaseProducts, distinctProductsMap);
 
   await fsPromises.writeFile(
