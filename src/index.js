@@ -374,11 +374,14 @@ async function main() {
   suggestedProducts.forEach((product, index) => {
     console.log(`\n${index + 1}. ${product.name}`);
     console.log(`   Average purchase frequency: every ${product.averagePurchaseFrequency} days`);
-    console.log(`   Days since last purchase: ${product.daysSinceLastPurchase} days`);
     console.log(`   Typical quantity: ${product.averageQuantityPerPurchase}`);
     console.log(`   Average price: R$ ${product.averagePriceInReais.toFixed(2)}`);
     console.log(`   Total spent: R$ ${(product.averageQuantityPerPurchase * product.averagePriceInReais).toFixed(2)}`);
   });
+
+  const totalSuggestedProducts = suggestedProducts.reduce((acc, product) => acc + (product.averageQuantityPerPurchase * product.averagePriceInReais), 0);
+  console.log(`\nTotal suggested products: ${suggestedProducts.length}`);
+  console.log(`Total suggested amount: R$ ${totalSuggestedProducts.toFixed(2)}`);
 }
 
 main();
