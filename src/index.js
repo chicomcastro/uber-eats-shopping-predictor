@@ -300,6 +300,12 @@ async function main() {
   }, 0) / (purchases.length - 1);
 
   console.log("Average days between purchases:", averageDaysBetweenPurchases);
+
+  const lastPurchaseDate = moment(purchases[purchases.length - 1].date, 'YYYY-MM-DD');
+
+  const nextPurchaseDate = lastPurchaseDate.add(averageDaysBetweenPurchases, 'days').format('YYYY-MM-DD');
+
+  console.log("Next purchase date:", nextPurchaseDate);
 }
 
 main();
