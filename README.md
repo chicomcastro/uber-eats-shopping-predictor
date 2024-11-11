@@ -2,6 +2,12 @@
 
 A Node.js application that analyzes PDF receipts from Uber Eats, extracts purchase data, and predicts future shopping needs based on purchase patterns.
 
+It is a simple and easy-to-use tool that helps you understand your shopping habits and make better decisions about what to buy next.
+
+It was built to help me understand my Uber Eats supermarket shopping habits and make better decisions about what to buy next.
+
+You can find your Uber Eats receipts at https://www.ubereats.com/br/orders.
+
 ## Features
 
 - PDF receipt parsing
