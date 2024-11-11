@@ -3,6 +3,21 @@ const moment = require("moment");
 const pdf = require("pdf-parse");
 const { v4: uuidv4 } = require("uuid");
 
+const monthsInPortuguese = {
+  'janeiro': '01',
+  'fevereiro': '02',
+  'março': '03',
+  'abril': '04',
+  'maio': '05',
+  'junho': '06',
+  'julho': '07',
+  'agosto': '08',
+  'setembro': '09',
+  'outubro': '10',
+  'novembro': '11',
+  'dezembro': '12'
+};
+
 async function getFiles(path) {
   try {
     const files = await fsPromises.readdir(path);
@@ -53,7 +68,15 @@ class Product {
 function parseReceipt(text) {
   // Extract date
   const dateMatch = text.match(/(\d+) de (\w+) de (\d{4})/);
-  const date = `${dateMatch[1]} ${dateMatch[2]} ${dateMatch[3]}`;
+
+  // Quebra a data em partes
+  const [day, monthInPortuguese, year] = dateMatch.slice(1);
+
+  // Converte o mês em português para número
+  const month = monthsInPortuguese[monthInPortuguese.toLowerCase()];
+
+  // Formata a data no padrão YYYY-MM-DD
+  const date = `${year}-${month}-${day.padStart(2, '0')}`;
 
   // Extract total value
   const totalMatch = text.match(/TotalR\$ ([\d,]+)/);
@@ -131,7 +154,7 @@ function parseReceipt(text) {
   };
 }
 
-async function parseProducts(files) {
+async function parsePurchases(files) {
   const results = [];
   for (const file of files) {
     console.log("\n\n--------------------------------");
@@ -168,13 +191,13 @@ async function parseProducts(files) {
   return results;
 }
 
-function parseRows(results) {
-  return results.map((result) => {
-    return result.products.map((product) => {
+function parsePurchaseProducts(purchases) {
+  return purchases.map((purchase) => {
+    return purchase.products.map((product) => {
       return {
-        purchaseId: result.id,
+        purchaseId: purchase.id,
         purchaseProductId: product.id,
-        date: moment(result.date, "D m YYYY").format("YYYY-MM-DD"),
+        date: purchase.date,
         productName: product.name,
         quantity: product.quantity,
         totalPrice: product.totalPrice,
@@ -205,6 +228,8 @@ function parseProductMetrics(rows) {
         quantity: 0,
         purchases: [],
         purchaseCount: 0,
+        averagePrice: 0,
+        averageDaysBetweenPurchases: 0,
       };
     }
 
@@ -218,6 +243,14 @@ function parseProductMetrics(rows) {
 
     acc[row.productId].purchaseCount += 1;
 
+    acc[row.productId].averagePrice = acc[row.productId].totalInCents / acc[row.productId].quantity;
+
+    acc[row.productId].averageDaysBetweenPurchases = acc[row.productId].purchases.reduce((acc, purchaseId, index, self) => {
+      if (index === 0) return 0;
+      const previousPurchase = self[index - 1];
+      return acc + moment(row.date).diff(moment(previousPurchase.date), "days");
+    }, 0) / (acc[row.productId].purchaseCount - 1);
+
     return acc;
   }, {});
 }
@@ -225,11 +258,16 @@ function parseProductMetrics(rows) {
 async function main() {
   const files = await getFiles("./src/input");
 
-  const results = await parseProducts(files);
+  const purchases = await parsePurchases(files);
 
-  const rows = parseRows(results);
+  await fsPromises.writeFile(
+    "./src/output/purchases.json",
+    JSON.stringify(purchases, null, 2)
+  );
 
-  const distinctProducts = rows.filter(
+  const purchaseProducts = parsePurchaseProducts(purchases);
+
+  const distinctProducts = purchaseProducts.filter(
     (row, index, self) =>
       index === self.findIndex((t) => t.productName === row.productName)
   );
@@ -241,19 +279,27 @@ async function main() {
     };
   });
 
-  const rowsWithProductIds = fillProductIds(rows, distinctProductsMap);
+  const purchaseProductsWithProductId = fillProductIds(purchaseProducts, distinctProductsMap);
 
   await fsPromises.writeFile(
     "./src/output/rows.json",
-    JSON.stringify(rowsWithProductIds, null, 2)
+    JSON.stringify(purchaseProductsWithProductId, null, 2)
   );
 
-  const productMetrics = parseProductMetrics(rowsWithProductIds);
+  const productMetrics = parseProductMetrics(purchaseProductsWithProductId);
 
   await fsPromises.writeFile(
     "./src/output/productMetrics.json",
     JSON.stringify(productMetrics, null, 2)
   );
+
+  const averageDaysBetweenPurchases = purchases.sort((a, b) => moment(a.date).diff(moment(b.date))).reduce((acc, purchase, index) => {
+    if (index === 0) return 0;
+    const previousPurchase = purchases[index - 1];
+    return acc + moment(purchase.date, 'YYYY-MM-DD').diff(moment(previousPurchase.date, 'YYYY-MM-DD'), "days");
+  }, 0) / (purchases.length - 1);
+
+  console.log("Average days between purchases:", averageDaysBetweenPurchases);
 }
 
 main();
