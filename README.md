@@ -68,6 +68,7 @@ The application generates three JSON files in the `src/output` directory:
 - `purchases.json`: Raw purchase data from receipts
 - `purchaseProducts.json`: Detailed product information from all purchases
 - `productMetrics.json`: Analytics and metrics for each product
+- `distinctProducts.json`: List of distinct products
 
 ## Data Analysis
 
