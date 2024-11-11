@@ -1,1 +1,9 @@
 node_modules
+
+# Ignore directories with sensitive data
+src/input/*
+src/output/*
+
+# Keep directory structure with .gitkeep
+!src/input/.gitkeep
+!src/output/.gitkeep

@@ -20,8 +20,8 @@ A Node.js application that analyzes PDF receipts from Uber Eats, extracts purcha
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
-cd [repository-name]
+git clone https://github.com/chicomcastro/uber-eats-shopping-predictor.git
+cd uber-eats-shopping-predictor
 ```
 
 2. Install dependencies:
@@ -35,6 +35,7 @@ npm install
 .
 ├── src/
 │   ├── input/      # Place PDF receipts here
+│   │   └── example-receipt.pdf    # Example receipt format
 │   ├── output/     # JSON output files
 │   └── index.js    # Main application file
 ```
