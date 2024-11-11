@@ -1,4 +1,4 @@
-# Receipt Parser and Purchase Predictor
+# Uber Eats Shopping Predictor
 
 A Node.js application that analyzes PDF receipts from Uber Eats, extracts purchase data, and predicts future shopping needs based on purchase patterns.
 
