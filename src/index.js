@@ -161,38 +161,38 @@ function parseReceipt(text) {
 async function parsePurchases(files) {
   const results = [];
   for (const file of files) {
-    console.log("\n\n--------------------------------");
-    console.log(`Reading file: ${file}`);
+    console.log("\n\n=== Processing Receipt File ===");
+    console.log(`📄 File name: ${file}`);
     const text = await extractText(`./src/input/${file}`);
     const result = parseReceipt(text);
 
     if (!result) {
-      console.log("No result found for file:", file);
+      console.log("❌ Failed to parse receipt from file:", file);
       continue;
     }
 
     results.push(result);
 
-    console.log("Date:", result.date);
-    console.log("Total:", result.total);
-    console.log("\nProducts:");
+    console.log(`📅 Receipt Date: ${result.date}`);
+    console.log(`💰 Receipt Total: R$ ${result.total.toFixed(2)}`);
+    console.log("\n📝 Items purchased in this receipt:");
     result.products.forEach((product) => {
-      console.log("\n-------------------");
-      console.log(`Quantity: ${product.quantity}`);
-      console.log(`Product: ${product.name}`);
-      console.log(`Unit price: R$ ${product.unitPrice}`);
-      console.log(`Total price: R$ ${product.totalPrice}`);
+      console.log("\n  🛍️ Product Details:");
+      console.log(`    • Name: ${product.name}`);
+      console.log(`    • Quantity: ${product.quantity} units`);
+      console.log(`    • Unit price: R$ ${product.unitPrice?.toFixed(2) || 'N/A'}`);
+      console.log(`    • Total price: R$ ${product.totalPrice.toFixed(2)}`);
       if (product.weight) {
-        console.log(`Weight: ${product.weight}kg`);
+        console.log(`    • Weight: ${product.weight}kg`);
       }
       if (product.pricePerKg) {
-        console.log(`Price per kg: R$ ${product.pricePerKg}`);
+        console.log(`    • Price per kg: R$ ${product.pricePerKg.toFixed(2)}`);
       }
       if (product.substituted) {
-        console.log(`Substituted by: ${product.substituted}`);
+        console.log(`    • ⚠️ Substituted by: ${product.substituted}`);
       }
       if (product.outOfStock) {
-        console.log("Product out of stock");
+        console.log("    • ❌ Product was out of stock");
       }
     });
   }
@@ -282,16 +282,17 @@ function predictNextPurchaseProducts(productMetrics, lastPurchaseDate, averageDa
     daysSinceLastPurchase: moment().diff(moment(lastPurchaseDate), 'days')
   }));
 
-  console.log('\nDebug - Total products:', productsArray.length);
+  console.log('\n=== Shopping Prediction Analysis ===');
+  console.log(`📊 Total unique products analyzed: ${productsArray.length}`);
 
   const productsWithMultiplePurchases = productsArray.filter(product => product.purchaseCount >= 2);
-  console.log('Products with 2+ purchases:', productsWithMultiplePurchases.length);
+  console.log(`🔄 Products purchased multiple times: ${productsWithMultiplePurchases.length}`);
 
   const productsWithValidAverages = productsWithMultiplePurchases.filter(product => 
     !isNaN(product.averageDaysBetweenPurchases) && 
     product.averageDaysBetweenPurchases > 0
   );
-  console.log('Products with valid averages:', productsWithValidAverages.length);
+  console.log(`✅ Products with valid purchase patterns: ${productsWithValidAverages.length}`);
 
   // Calcular a data prevista para a próxima compra
   const nextPurchaseDate = moment(lastPurchaseDate).add(averageDaysBetweenPurchases, 'days');
@@ -300,12 +301,9 @@ function predictNextPurchaseProducts(productMetrics, lastPurchaseDate, averageDa
     // Calcular quando este produto específico precisará ser comprado novamente
     const productNextPurchaseDate = moment(lastPurchaseDate).add(product.averageDaysBetweenPurchases, 'days');
     const needsToBePurchased = productNextPurchaseDate.isSameOrBefore(nextPurchaseDate);
-    
-    console.log(`${product.productName}: Next purchase date: ${productNextPurchaseDate.format('YYYY-MM-DD')}, Store visit date: ${nextPurchaseDate.format('YYYY-MM-DD')}, Needs purchase: ${needsToBePurchased}`);
-    
     return needsToBePurchased;
   });
-  console.log('Products needing purchase:', productsNearThreshold.length);
+  console.log(`📋 Total products needing purchase: ${productsNearThreshold.length}`);
 
   const likelyProducts = productsNearThreshold
     .sort((a, b) => {
@@ -374,23 +372,29 @@ async function main() {
 
   const lastPurchaseDate = moment(purchases[purchases.length - 1].date, 'YYYY-MM-DD');
 
-  const nextPurchaseDate = lastPurchaseDate.add(averageDaysBetweenPurchases, 'days').format('YYYY-MM-DD');
+  const nextPurchaseDate = lastPurchaseDate.clone().add(averageDaysBetweenPurchases, 'days').format('YYYY-MM-DD');
 
   console.log("Next purchase date:", nextPurchaseDate);
 
+  console.log("\n=== Shopping Pattern Analysis ===");
+  console.log(`🔄 Average shopping interval: ${Math.round(averageDaysBetweenPurchases)} days`);
+  console.log(`📅 Last purchase date: ${lastPurchaseDate.format('YYYY-MM-DD')}`);
+  console.log(`🎯 Predicted next shopping date: ${nextPurchaseDate}`);
+
   const suggestedProducts = predictNextPurchaseProducts(productMetrics, purchases[purchases.length - 1].date, Math.ceil(averageDaysBetweenPurchases));
-  console.log("\nSuggested products for next purchase:");
+  console.log("\n=== Shopping List Suggestions ===");
   suggestedProducts.forEach((product, index) => {
     console.log(`\n${index + 1}. ${product.name}`);
-    console.log(`   Average purchase frequency: every ${product.averagePurchaseFrequency} days`);
-    console.log(`   Typical quantity: ${product.averageQuantityPerPurchase}`);
-    console.log(`   Average price: R$ ${product.averagePriceInReais.toFixed(2)}`);
-    console.log(`   Total spent: R$ ${(product.averageQuantityPerPurchase * product.averagePriceInReais).toFixed(2)}`);
+    console.log(`   • Shopping frequency: Every ${product.averagePurchaseFrequency} days`);
+    console.log(`   • Suggested quantity: ${product.averageQuantityPerPurchase} units`);
+    console.log(`   • Expected price: R$ ${product.averagePriceInReais.toFixed(2)}`);
+    console.log(`   • Estimated total: R$ ${(product.averageQuantityPerPurchase * product.averagePriceInReais).toFixed(2)}`);
   });
 
   const totalSuggestedProducts = suggestedProducts.reduce((acc, product) => acc + (product.averageQuantityPerPurchase * product.averagePriceInReais), 0);
-  console.log(`\nTotal suggested products: ${suggestedProducts.length}`);
-  console.log(`Total suggested amount: R$ ${totalSuggestedProducts.toFixed(2)}`);
+  console.log(`\n📊 Summary:`);
+  console.log(`   • Items to buy: ${suggestedProducts.length} products`);
+  console.log(`   • Estimated total: R$ ${totalSuggestedProducts.toFixed(2)}`);
 }
 
 main();
