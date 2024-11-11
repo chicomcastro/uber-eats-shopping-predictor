@@ -245,45 +245,72 @@ function parseProductMetrics(purchaseProducts) {
 
     acc[purchaseProduct.productId].averagePrice = acc[purchaseProduct.productId].totalInCents / acc[purchaseProduct.productId].quantity;
 
-    acc[purchaseProduct.productId].averageDaysBetweenPurchases = acc[purchaseProduct.productId].purchases.reduce((acc, purchaseId, index, self) => {
-      if (index === 0) return 0;
-      const previousPurchase = purchaseProducts
-        .filter((p) => p.productId === purchaseProduct.productId && moment(p.date) < moment(purchaseProduct.date))
-        .sort((a, b) => moment(b.date).diff(moment(a.date)))[0];
-      return acc + moment(purchaseProduct.date).diff(moment(previousPurchase.date), "days");
-    }, 0) / (acc[purchaseProduct.productId].purchaseCount - 1);
+    const productPurchases = purchaseProducts
+      .filter(p => p.productId === purchaseProduct.productId)
+      .sort((a, b) => moment(a.date).diff(moment(b.date)));
+
+    if (productPurchases.length >= 2) {
+      // Calcula a diferença de dias entre cada compra consecutiva
+      const daysBetweenPurchases = productPurchases.reduce((total, purchase, index) => {
+        if (index === 0) return 0;
+        const daysDiff = moment(purchase.date).diff(moment(productPurchases[index - 1].date), 'days');
+        return total + daysDiff;
+      }, 0);
+
+      // Calcula a média (total de dias dividido pelo número de intervalos)
+      acc[purchaseProduct.productId].averageDaysBetweenPurchases = 
+        daysBetweenPurchases / (productPurchases.length - 1);
+    }
 
     return acc;
   }, {});
 }
 
-function predictNextPurchaseProducts(productMetrics, lastPurchaseDate) {
-  // Convert metrics object to array for easier manipulation
+function predictNextPurchaseProducts(productMetrics, lastPurchaseDate, averageDaysBetweenPurchases) {
   const productsArray = Object.entries(productMetrics).map(([productId, metrics]) => ({
     productId,
     ...metrics,
     daysSinceLastPurchase: moment().diff(moment(lastPurchaseDate), 'days')
   }));
 
-  // Filter and sort products based on purchase frequency and time since last purchase
-  const likelyProducts = productsArray
-    .filter(product => 
-      // Filter out products with less than 2 purchases (to have meaningful averages)
-      product.purchaseCount >= 2 &&
-      // Filter products where time since last purchase is close to or exceeds average frequency
-      product.daysSinceLastPurchase >= (product.averageDaysBetweenPurchases * 0.8)
-    )
+  console.log('\nDebug - Total products:', productsArray.length);
+
+  const productsWithMultiplePurchases = productsArray.filter(product => product.purchaseCount >= 2);
+  console.log('Products with 2+ purchases:', productsWithMultiplePurchases.length);
+
+  const productsWithValidAverages = productsWithMultiplePurchases.filter(product => 
+    !isNaN(product.averageDaysBetweenPurchases) && 
+    product.averageDaysBetweenPurchases > 0
+  );
+  console.log('Products with valid averages:', productsWithValidAverages.length);
+
+  // Calcular a data prevista para a próxima compra
+  const nextPurchaseDate = moment(lastPurchaseDate).add(averageDaysBetweenPurchases, 'days');
+
+  const productsNearThreshold = productsWithValidAverages.filter(product => {
+    // Calcular quando este produto específico precisará ser comprado novamente
+    const productNextPurchaseDate = moment(lastPurchaseDate).add(product.averageDaysBetweenPurchases, 'days');
+    const needsToBePurchased = productNextPurchaseDate.isSameOrBefore(nextPurchaseDate);
+    
+    console.log(`${product.productName}: Next purchase date: ${productNextPurchaseDate.format('YYYY-MM-DD')}, Store visit date: ${nextPurchaseDate.format('YYYY-MM-DD')}, Needs purchase: ${needsToBePurchased}`);
+    
+    return needsToBePurchased;
+  });
+  console.log('Products needing purchase:', productsNearThreshold.length);
+
+  const likelyProducts = productsNearThreshold
     .sort((a, b) => {
-      // Sort by how overdue the product is compared to its average purchase frequency
-      const aOverdueRatio = a.daysSinceLastPurchase / a.averageDaysBetweenPurchases;
-      const bOverdueRatio = b.daysSinceLastPurchase / b.averageDaysBetweenPurchases;
-      return bOverdueRatio - aOverdueRatio;
+      // Ordenar por proximidade da data de compra
+      const aNextPurchase = moment(lastPurchaseDate).add(a.averageDaysBetweenPurchases, 'days');
+      const bNextPurchase = moment(lastPurchaseDate).add(b.averageDaysBetweenPurchases, 'days');
+      return aNextPurchase.diff(bNextPurchase);
     })
     .map(product => ({
       name: product.productName,
-      averagePurchaseFrequency: Math.round(product.averageDaysBetweenPurchases),
       daysSinceLastPurchase: product.daysSinceLastPurchase,
-      averageQuantityPerPurchase: Math.round(product.quantity / product.purchaseCount * 100) / 100,
+      averagePurchaseFrequency: Math.round(product.averageDaysBetweenPurchases),
+      nextPurchaseDate: moment(lastPurchaseDate).add(product.averageDaysBetweenPurchases, 'days').format('YYYY-MM-DD'),
+      averageQuantityPerPurchase: Math.ceil(product.quantity / product.purchaseCount),
       averagePriceInReais: Math.round(product.averagePrice) / 100
     }));
 
@@ -342,7 +369,7 @@ async function main() {
 
   console.log("Next purchase date:", nextPurchaseDate);
 
-  const suggestedProducts = predictNextPurchaseProducts(productMetrics, purchases[purchases.length - 1].date);
+  const suggestedProducts = predictNextPurchaseProducts(productMetrics, purchases[purchases.length - 1].date, Math.ceil(averageDaysBetweenPurchases));
   console.log("\nSuggested products for next purchase:");
   suggestedProducts.forEach((product, index) => {
     console.log(`\n${index + 1}. ${product.name}`);
@@ -350,6 +377,7 @@ async function main() {
     console.log(`   Days since last purchase: ${product.daysSinceLastPurchase} days`);
     console.log(`   Typical quantity: ${product.averageQuantityPerPurchase}`);
     console.log(`   Average price: R$ ${product.averagePriceInReais.toFixed(2)}`);
+    console.log(`   Total spent: R$ ${(product.averageQuantityPerPurchase * product.averagePriceInReais).toFixed(2)}`);
   });
 }
 
