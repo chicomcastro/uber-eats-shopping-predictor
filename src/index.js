@@ -30,7 +30,7 @@ async function getFiles(path) {
 async function extractText(path) {
   try {
     if (!path.toLowerCase().endsWith(".pdf")) {
-      throw new Error("File is not a PDF");
+      return "";
     }
 
     const dataBuffer = await fsPromises.readFile(path);
@@ -66,6 +66,10 @@ class Product {
 }
 
 function parseReceipt(text) {
+  if (!text) {
+    return null;
+  }
+
   // Extract date
   const dateMatch = text.match(/(\d+) de (\w+) de (\d{4})/);
 
@@ -161,6 +165,11 @@ async function parsePurchases(files) {
     console.log(`Reading file: ${file}`);
     const text = await extractText(`./src/input/${file}`);
     const result = parseReceipt(text);
+
+    if (!result) {
+      console.log("No result found for file:", file);
+      continue;
+    }
 
     results.push(result);
 
