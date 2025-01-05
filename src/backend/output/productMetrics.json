@@ -1,0 +1,2757 @@
+{
+  "e1ff3537-02ac-4695-80ad-17ee604b74b3": {
+    "productName": "Nestlé iogurte natural sabor cenoura, laranja e mel (170 g)",
+    "totalInCents": 15393,
+    "quantity": 47,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 5,
+    "averagePrice": 327.51063829787233,
+    "averageDaysBetweenPurchases": 18.5
+  },
+  "dd951830-a347-499e-a1c3-13de8652fd1f": {
+    "productName": "Itambé queijo mussarela fatiado (150 g)",
+    "totalInCents": 2096,
+    "quantity": 4,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 524,
+    "averageDaysBetweenPurchases": 7
+  },
+  "8107ad28-cd54-4307-8a51-f81033a5bfd9": {
+    "productName": "Piracanjuba leite semidesnatado (1 l)",
+    "totalInCents": 8865,
+    "quantity": 17,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 6,
+    "averagePrice": 521.4705882352941,
+    "averageDaysBetweenPurchases": 16
+  },
+  "8db69c1d-c77b-4067-933d-0b06f8be1617": {
+    "productName": "Label rouge ovos vermelhos caipira orgânico (20 unidades)",
+    "totalInCents": 3490,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 3490,
+    "averageDaysBetweenPurchases": 0
+  },
+  "01b0f99b-a406-4c5c-b3ae-88f2d70a6db3": {
+    "productName": "Banana nanica (unidade: 180 g aprox)",
+    "totalInCents": 1292,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1292,
+    "averageDaysBetweenPurchases": 0
+  },
+  "329c31c6-db51-48e7-b943-a9d832dd2978": {
+    "productName": "Sadia filé de peito de frango congelado sem pele sem osso (1 kg)",
+    "totalInCents": 19870,
+    "quantity": 10,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 5,
+    "averagePrice": 1987,
+    "averageDaysBetweenPurchases": 13.25
+  },
+  "1c58022a-7d39-4a9e-9fb5-c075277205c3": {
+    "productName": "Itambé requeijão tradicional (400 g)",
+    "totalInCents": 15920,
+    "quantity": 11,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 10,
+    "averagePrice": 1447.2727272727273,
+    "averageDaysBetweenPurchases": 8.88888888888889
+  },
+  "375879eb-a28e-44a5-baca-1977c0381b43": {
+    "productName": "Perdigão presunto cozido fatiado (200 g)",
+    "totalInCents": 4565,
+    "quantity": 7,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 652.1428571428571,
+    "averageDaysBetweenPurchases": 31.333333333333332
+  },
+  "28d45bc9-3a28-481a-8be0-fc423a0bb639": {
+    "productName": "Natural one suco de laranja integral não refrigerado (2 l)",
+    "totalInCents": 13413,
+    "quantity": 7,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 7,
+    "averagePrice": 1916.142857142857,
+    "averageDaysBetweenPurchases": 13.333333333333334
+  },
+  "7460a4a5-6d29-4a94-bf13-3bbb68f9ad9f": {
+    "productName": "Piracanjuba creme de leite uht 17% de gordura (200 g)",
+    "totalInCents": 4833,
+    "quantity": 17,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 6,
+    "averagePrice": 284.29411764705884,
+    "averageDaysBetweenPurchases": 14.8
+  },
+  "e6310aed-26ce-4b22-a10c-00d695a5b840": {
+    "productName": "Nestlé cereal matinal snow flakes tradicional (800g)",
+    "totalInCents": 7395,
+    "quantity": 4,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 1848.75,
+    "averageDaysBetweenPurchases": 26.666666666666668
+  },
+  "2c00bd25-e276-41ac-b3ae-520e95a2ffc9": {
+    "productName": "Ferrero creme de avelã com cacau nutella (650 g)",
+    "totalInCents": 17760,
+    "quantity": 4,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 4440,
+    "averageDaysBetweenPurchases": 16.333333333333332
+  },
+  "23ad7480-83a8-4233-a647-16630e9bbac6": {
+    "productName": "Nestlé leite fermentado chamyto (6x75 g)",
+    "totalInCents": 1697,
+    "quantity": 3,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 565.6666666666666,
+    "averageDaysBetweenPurchases": 47
+  },
+  "1c7896ee-68eb-42d2-a886-551d24badaed": {
+    "productName": "Qualy margarina cremosa com sal qmix (500 g)",
+    "totalInCents": 1450,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 725,
+    "averageDaysBetweenPurchases": 32
+  },
+  "0012ff94-a09c-4e35-87d3-89128026d017": {
+    "productName": "Cenoura (unidade: 150 g aprox)",
+    "totalInCents": 1260,
+    "quantity": 10,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 7,
+    "averagePrice": 126,
+    "averageDaysBetweenPurchases": 15.666666666666666
+  },
+  "2d28a013-a531-4e38-aaac-a2bf9ceebe70": {
+    "productName": "Goiaba vermelha tropical (unidade: 150 g aprox)",
+    "totalInCents": 1335,
+    "quantity": 12,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 111.25,
+    "averageDaysBetweenPurchases": 22.333333333333332
+  },
+  "6b38a370-29b5-41c8-a1a8-c96076932292": {
+    "productName": "Personal vip papel higiênico folha dupla neutro (16 rolos)",
+    "totalInCents": 8002,
+    "quantity": 3,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 2667.3333333333335,
+    "averageDaysBetweenPurchases": 30
+  },
+  "21f37f78-cc9d-46a5-aac2-cbe1ffa07557": {
+    "productName": "Piracanjuba leite condensado semidesnatado (395 g)",
+    "totalInCents": 1138,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 569,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d0437cc2-bd59-49f1-988c-b1031c5ba69f": {
+    "productName": "Tomate sweet grape (180 g)",
+    "totalInCents": 285,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 285,
+    "averageDaysBetweenPurchases": 0
+  },
+  "cb637d2c-173c-411c-9478-ec13959c78c3": {
+    "productName": "Heinz ketchup tradicional (397 g)",
+    "totalInCents": 1499,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1499,
+    "averageDaysBetweenPurchases": 0
+  },
+  "a9c94a3f-c603-40e3-8bd9-df93a0da0140": {
+    "productName": "Tomate salada (unidade: 220 g aprox)",
+    "totalInCents": 479,
+    "quantity": 5,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 95.8,
+    "averageDaysBetweenPurchases": 67
+  },
+  "6d975ccf-8d85-4509-bb0e-eaa467e75a9b": {
+    "productName": "Laranja-pera (unidade: 200 g aprox)",
+    "totalInCents": 1098,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1098,
+    "averageDaysBetweenPurchases": 0
+  },
+  "ca07feef-2f09-48bf-ae28-b5f77c41554c": {
+    "productName": "Rexona desodorante roll-on antibacterial + invisible (50 ml)",
+    "totalInCents": 699,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 699,
+    "averageDaysBetweenPurchases": 0
+  },
+  "aec657b1-55ef-434d-8501-afcc1414ac8d": {
+    "productName": "Scala papel toalha plus uso diário (2 un, 60 folhas)",
+    "totalInCents": 520,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 520,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f673d0b5-94a0-45b3-8b00-7fa3c52d749e": {
+    "productName": "Club social biscoito salgado original (288 g)",
+    "totalInCents": 3665,
+    "quantity": 4,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 916.25,
+    "averageDaysBetweenPurchases": 24.5
+  },
+  "e3ecf3e3-8529-4416-9198-e94c6cabb0ac": {
+    "productName": "União açúcar refinado (1 kg)",
+    "totalInCents": 830,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 415,
+    "averageDaysBetweenPurchases": 67
+  },
+  "3cd9a9ab-6f1b-412e-9aea-0e1b18d9a4a2": {
+    "productName": "Cotonetes hastes flexíveis com pontas de algodão (150 un)",
+    "totalInCents": 2380,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1190,
+    "averageDaysBetweenPurchases": 60
+  },
+  "321986f8-3846-4be6-b860-ec9854973a51": {
+    "productName": "Queensberry geleia de morango diet (280 g)",
+    "totalInCents": 2049,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2049,
+    "averageDaysBetweenPurchases": 0
+  },
+  "34545469-faf8-4181-b6a7-db4f44662700": {
+    "productName": "Ninho leite em pó integral (380 g)",
+    "totalInCents": 1850,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1850,
+    "averageDaysBetweenPurchases": 0
+  },
+  "edbf50c5-32cb-4d4c-9fc3-f98e25181bd7": {
+    "productName": "Hellmann's maionese (657 g)",
+    "totalInCents": 1365,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1365,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d85a917a-2b3e-44ee-a291-94e83740886d": {
+    "productName": "Dona benta macarrão penne com ovos (500 g)",
+    "totalInCents": 628,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 314,
+    "averageDaysBetweenPurchases": 67
+  },
+  "27e02cec-8708-4da3-afc6-2f70d8dd27ea": {
+    "productName": "Urbano macarrão parafuso com ovos zero glúten (500 g)",
+    "totalInCents": 419,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 419,
+    "averageDaysBetweenPurchases": 0
+  },
+  "ed350b31-d1e2-43e9-a877-75d13215190a": {
+    "productName": "Adria macarrão de sêmola com ovos espaguete 8 (500 g)",
+    "totalInCents": 355,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 355,
+    "averageDaysBetweenPurchases": 0
+  },
+  "500c19d4-e5c0-40fe-b97e-2aba2a9e340e": {
+    "productName": "Massa Leve massa fresca para pastel (200 g)",
+    "totalInCents": 760,
+    "quantity": 2,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 380,
+    "averageDaysBetweenPurchases": 0
+  },
+  "9f89705e-43c5-439e-bfe3-734eaf4a71fc": {
+    "productName": "Veja limpador multiuso gold original (500 ml)",
+    "totalInCents": 439,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 439,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f2fd3c8b-a41e-4ce5-a3ac-42072d16b6f2": {
+    "productName": "Maçã gala (unidade: 160 g aprox)",
+    "totalInCents": 1032,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1032,
+    "averageDaysBetweenPurchases": 0
+  },
+  "afcfe949-fe54-4e2b-8569-2d154b065218": {
+    "productName": "Quaker aveia integral em flocos (450 g)",
+    "totalInCents": 4440,
+    "quantity": 5,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab",
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 888,
+    "averageDaysBetweenPurchases": 9
+  },
+  "838954b5-9bdd-4885-8430-b679c3d633e1": {
+    "productName": "Granatus granola de frutas e castanhas (1kg)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "7f0e2485-0f9f-4eb7-b1df-ee6e85496dab"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1ce6e791-e4c0-4602-be47-243021018129": {
+    "productName": "Jussara leite semidesnatado uht (1 l)",
+    "totalInCents": 3114,
+    "quantity": 6,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 519,
+    "averageDaysBetweenPurchases": 6
+  },
+  "99c3705a-dd02-4686-bb8c-1ef5cf81bfb4": {
+    "productName": "Banana nanica",
+    "totalInCents": 15688,
+    "quantity": 9,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 9,
+    "averagePrice": 1743.111111111111,
+    "averageDaysBetweenPurchases": 6.625
+  },
+  "b0f7555a-d963-4db4-a6db-67e5579e93ed": {
+    "productName": "Dove sabonete em barra hidratante cremoso original (90 g)",
+    "totalInCents": 6465,
+    "quantity": 15,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 5,
+    "averagePrice": 431,
+    "averageDaysBetweenPurchases": 18.25
+  },
+  "88096954-98ba-4b69-9c83-47fa21e1e59f": {
+    "productName": "Pullman pão de forma 100% integral grãos & castanhas (450g)",
+    "totalInCents": 4287,
+    "quantity": 3,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1429,
+    "averageDaysBetweenPurchases": 6
+  },
+  "d8f67030-931f-49a7-b446-c273a44dd736": {
+    "productName": "Kelco areia higiênica pipicat classic (4 kg)",
+    "totalInCents": 4830,
+    "quantity": 5,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 966,
+    "averageDaysBetweenPurchases": 11
+  },
+  "5b502193-2f0c-48cf-9daa-6df771bee9d2": {
+    "productName": "OMO lava roupas líquido multiação (3 l)",
+    "totalInCents": 7780,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 3890,
+    "averageDaysBetweenPurchases": 42
+  },
+  "81a9f7ba-3481-4d7c-a75a-c0e3dba6fd32": {
+    "productName": "Camil feijão carioca tipo 1 (1 kg)",
+    "totalInCents": 1814,
+    "quantity": 3,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 604.6666666666666,
+    "averageDaysBetweenPurchases": 12.5
+  },
+  "be08491b-4225-49ae-9ff6-4122b49dff58": {
+    "productName": "Nestlé achocolatado em pó nescau 2.0 (1,2 kg)",
+    "totalInCents": 4420,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 2210,
+    "averageDaysBetweenPurchases": 73
+  },
+  "cb4c3a8f-a742-493d-ad60-b93ca6207346": {
+    "productName": "Anjimoto tempero de sal e alho sabor a mi (300 g)",
+    "totalInCents": 1433,
+    "quantity": 3,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 477.6666666666667,
+    "averageDaysBetweenPurchases": 36.5
+  },
+  "b2924fc7-763e-4a54-b58f-4700ec54dadd": {
+    "productName": "Ovo vermelho grande (30 unidades)",
+    "totalInCents": 3580,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "ea219e1b-335b-4d7b-834e-97b57e761886"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1790,
+    "averageDaysBetweenPurchases": 18
+  },
+  "4ce3c15e-f152-4e6e-87e4-68bf34afc47b": {
+    "productName": "Sadia Sadia Presunto cozido fatiado (180 g)",
+    "totalInCents": 1976,
+    "quantity": 4,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 494,
+    "averageDaysBetweenPurchases": 46
+  },
+  "66630042-9d66-4cb5-8e2d-6108def9a23d": {
+    "productName": "Colgate creme dental tripla ação sabor menta original (90 g)",
+    "totalInCents": 890,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 445,
+    "averageDaysBetweenPurchases": 0
+  },
+  "bb7257f9-6dad-4905-85aa-7d5229dd4d73": {
+    "productName": "Baruel desodorante em pó para pés cânfora tenys pé (100 g)",
+    "totalInCents": 998,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 499,
+    "averageDaysBetweenPurchases": 11
+  },
+  "cbaeeec3-399a-4d10-b6a1-28470430de0b": {
+    "productName": "Cebola nacional (unidade: 150 g aprox)",
+    "totalInCents": 546,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 273,
+    "averageDaysBetweenPurchases": 46
+  },
+  "6fefebf6-4461-43e5-bf92-8eb1a97d1d84": {
+    "productName": "Alho comum (unidade: 70 g aprox)",
+    "totalInCents": 411,
+    "quantity": 1,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 411,
+    "averageDaysBetweenPurchases": 0
+  },
+  "b3d3a36f-aeab-4242-a578-35898be8b552": {
+    "productName": "Super alho alho triturado (200g)",
+    "totalInCents": 395,
+    "quantity": 1,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 395,
+    "averageDaysBetweenPurchases": 0
+  },
+  "4531ec7b-8e1c-41a7-af30-ac4e3640f42d": {
+    "productName": "Whiskas ração seca premium sabor carne para gatos castrados (900 g)",
+    "totalInCents": 5500,
+    "quantity": 2,
+    "purchases": [
+      "0926ac9d-8210-4421-a8e8-6e346ef48f29",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 2750,
+    "averageDaysBetweenPurchases": 11
+  },
+  "1222baca-75f6-42fd-94f1-7d80e89832eb": {
+    "productName": "Président queijo mussarela fatiado (150 g)",
+    "totalInCents": 5760,
+    "quantity": 6,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 960,
+    "averageDaysBetweenPurchases": 18
+  },
+  "566a65f3-8e98-46e0-8673-d02e5b590333": {
+    "productName": "Rap10 pão tortilha tradicional (297 g)",
+    "totalInCents": 3542,
+    "quantity": 4,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 885.5,
+    "averageDaysBetweenPurchases": 12
+  },
+  "c7bb3d85-a341-4eef-988b-d42002e0c7bd": {
+    "productName": "Vitarella biscoito salgado cream cracker tradicional (350 g)",
+    "totalInCents": 2079,
+    "quantity": 4,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 519.75,
+    "averageDaysBetweenPurchases": 22.333333333333332
+  },
+  "6c399e91-d85a-4469-b163-d57a7b8d396b": {
+    "productName": "Namorado arroz branco longo fino tipo 1 (1 kg)",
+    "totalInCents": 1153,
+    "quantity": 2,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 576.5,
+    "averageDaysBetweenPurchases": 24
+  },
+  "dc1bdc54-9f73-4cc2-8ef5-2fd4e8505bf3": {
+    "productName": "Leite de rosas loção hidratante (310 ml)",
+    "totalInCents": 990,
+    "quantity": 1,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "7581f1d6-b567-41ae-a135-f993d6adffbd": {
+    "productName": "Herbíssimo desodorante em creme antiperspirante neutro sem álcool hidra + (55g)",
+    "totalInCents": 469,
+    "quantity": 1,
+    "purchases": [
+      "9ae4d99d-dfdb-4318-bf9a-c12be0bb6f4b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 469,
+    "averageDaysBetweenPurchases": 0
+  },
+  "5f6ea5b1-2ed1-47c6-8e92-5e8a03266def": {
+    "productName": "Ypê amaciante de roupas aconchego (5 l)",
+    "totalInCents": 2088,
+    "quantity": 1,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2088,
+    "averageDaysBetweenPurchases": 0
+  },
+  "41d20689-a108-4554-9974-71987059a6ec": {
+    "productName": "Danone iogurte sabor laranja cenoura e mel (160g)",
+    "totalInCents": 6538,
+    "quantity": 22,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 297.1818181818182,
+    "averageDaysBetweenPurchases": 27
+  },
+  "24c4d5e3-f8c4-45a2-8edc-caa78513d1b1": {
+    "productName": "Ipanema queijo mussarela fatiado (150g)",
+    "totalInCents": 3280,
+    "quantity": 4,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 820,
+    "averageDaysBetweenPurchases": 0
+  },
+  "bdaeb65a-3875-4e82-852a-10ae1d743c4d": {
+    "productName": "Italac leite uht semidesnatado (1 l)",
+    "totalInCents": 8779,
+    "quantity": 17,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 5,
+    "averagePrice": 516.4117647058823,
+    "averageDaysBetweenPurchases": 10.5
+  },
+  "4fbd19d9-2b01-4418-b6d7-f3f8aebec681": {
+    "productName": "Saboroso arroz agulhinha tipo 1 (1kg)",
+    "totalInCents": 1084,
+    "quantity": 2,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 542,
+    "averageDaysBetweenPurchases": 56
+  },
+  "41082fdf-d128-4d28-b824-442f932792f2": {
+    "productName": "Batata lavada (unidade: 150 g aprox)",
+    "totalInCents": 1608,
+    "quantity": 3,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 536,
+    "averageDaysBetweenPurchases": 17.5
+  },
+  "d2e2c41d-38b1-4620-b2e9-03a7de0818b1": {
+    "productName": "Heinz molho de tomate tradicional com pedaços (300 g)",
+    "totalInCents": 967,
+    "quantity": 3,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 322.3333333333333,
+    "averageDaysBetweenPurchases": 35
+  },
+  "0b8c6b94-91d1-488b-a841-aa9047d2a29d": {
+    "productName": "Marajoara leite condensado semidesnatado (395 g)",
+    "totalInCents": 3713,
+    "quantity": 7,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 530.4285714285714,
+    "averageDaysBetweenPurchases": 18.666666666666668
+  },
+  "15ffc05d-ccb1-4410-a09e-79126c669e38": {
+    "productName": "Wickbold pão de forma integral premium (450 g)",
+    "totalInCents": 1398,
+    "quantity": 2,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 699,
+    "averageDaysBetweenPurchases": 0
+  },
+  "2cc97eb9-7a7f-4605-a86e-f4a2fdc7dc34": {
+    "productName": "Dona benta farinha de trigo com fermento (1 kg)",
+    "totalInCents": 579,
+    "quantity": 1,
+    "purchases": [
+      "9e89d2dc-46a2-469c-97ac-124a723d07a1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 579,
+    "averageDaysBetweenPurchases": 0
+  },
+  "01a5da6f-454c-4906-9e5e-c4599fabe469": {
+    "productName": "Maçã gala",
+    "totalInCents": 2179,
+    "quantity": 7,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 311.2857142857143,
+    "averageDaysBetweenPurchases": 34.5
+  },
+  "40fc3c54-3a22-4b58-b617-f987addff7c9": {
+    "productName": "Uva verde thompson (500 g)",
+    "totalInCents": 5135,
+    "quantity": 7,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 6,
+    "averagePrice": 733.5714285714286,
+    "averageDaysBetweenPurchases": 11
+  },
+  "84c18a8e-3aba-4b42-a71b-48666f8d9198": {
+    "productName": "Président queijo mussarela fatiado (300 g)",
+    "totalInCents": 20360,
+    "quantity": 12,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 6,
+    "averagePrice": 1696.6666666666667,
+    "averageDaysBetweenPurchases": 9.8
+  },
+  "86fec60d-4ffb-4f92-a511-11d0c5237f36": {
+    "productName": "Pullman pão de forma artesano integral 30% (500 g)",
+    "totalInCents": 2196,
+    "quantity": 2,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1098,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1a24c631-7f2b-4f2d-bed3-55fc8cb33e4b": {
+    "productName": "OX kit nutrição intensa shampoo 350ml e condicionador 170ml nutrição intensa (2 itens)",
+    "totalInCents": 10690,
+    "quantity": 4,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 2672.5,
+    "averageDaysBetweenPurchases": 27.5
+  },
+  "5a01f8fa-c3d9-44b9-b480-f3c81df9ecba": {
+    "productName": "Santa maria sacos para lixo em rolo 30 litros (50 unidades)",
+    "totalInCents": 820,
+    "quantity": 1,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 820,
+    "averageDaysBetweenPurchases": 0
+  },
+  "00d8b4e6-f959-41f0-aae2-8c8341c10c60": {
+    "productName": "Listerine antisséptico bucal cuidado total 6 em 1 menta fresca (500ml)",
+    "totalInCents": 5370,
+    "quantity": 2,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 2685,
+    "averageDaysBetweenPurchases": 42
+  },
+  "8a120ebb-8337-4525-a512-31be0591e84b": {
+    "productName": "Maratá molho de pimenta picante gota (150 ml)",
+    "totalInCents": 195,
+    "quantity": 1,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 195,
+    "averageDaysBetweenPurchases": 0
+  },
+  "85f24cb4-6cad-4017-aaa5-e417ac1602ee": {
+    "productName": "Seara filé de peito de frango congelados e soltinhos (1 kg)",
+    "totalInCents": 19412,
+    "quantity": 10,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 1941.2,
+    "averageDaysBetweenPurchases": 23
+  },
+  "3e8a27bd-4bca-4cda-837a-08d98d69a58b": {
+    "productName": "Andorinha azeite de oliva extra virgem (500 ml)",
+    "totalInCents": 9075,
+    "quantity": 2,
+    "purchases": [
+      "ea219e1b-335b-4d7b-834e-97b57e761886",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 4537.5,
+    "averageDaysBetweenPurchases": 55
+  },
+  "4978cf8d-0e9b-4ec2-b98b-9ccbfcdfe348": {
+    "productName": "Wickbold pão tipo tortilha tá pronto! original (270 g)",
+    "totalInCents": 1558,
+    "quantity": 2,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 779,
+    "averageDaysBetweenPurchases": 0
+  },
+  "c4540c93-4392-4559-95d7-91a6fb25a31f": {
+    "productName": "Brilux alvejante multi perfumado com detergente 3 em 1 (1l)",
+    "totalInCents": 379,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 379,
+    "averageDaysBetweenPurchases": 0
+  },
+  "dece7457-66d8-49f9-8a94-bc6280f4d872": {
+    "productName": "Top lixo saco para lixo verde (60un)",
+    "totalInCents": 1490,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1490,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d3d463e5-76f8-48b4-9c65-2e99e8d5414c": {
+    "productName": "Massa leve massa fresca para pastel (500 g)",
+    "totalInCents": 1240,
+    "quantity": 2,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 620,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f5c853e0-3bf6-45a6-a890-7d809894fb49": {
+    "productName": "Frimesa presunto cozido fatiado (200 g)",
+    "totalInCents": 2250,
+    "quantity": 3,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 750,
+    "averageDaysBetweenPurchases": 55
+  },
+  "a250b69d-93a7-4522-ab01-3474cef3f7be": {
+    "productName": "Aurora pão de alho picante (340g)",
+    "totalInCents": 3840,
+    "quantity": 4,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 960,
+    "averageDaysBetweenPurchases": 16
+  },
+  "6c5deecf-e95a-4e80-bd0f-666f7a55b238": {
+    "productName": "Aurora alimentos pão de alho tradicional (340g)",
+    "totalInCents": 960,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 960,
+    "averageDaysBetweenPurchases": 0
+  },
+  "a9b967f8-2231-460a-92cd-a3c34471d762": {
+    "productName": "Cabaré bebida alcoólica gaseificada ice frutas amarelas (275 ml)",
+    "totalInCents": 1139,
+    "quantity": 3,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 379.6666666666667,
+    "averageDaysBetweenPurchases": 35
+  },
+  "5430b2a3-40cf-4e01-a796-b3dbe97c8cf4": {
+    "productName": "Cabaré bebida mista ice sabor limão (275 ml)",
+    "totalInCents": 549,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 549,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d9dcfcfa-ba0f-4b17-a78b-57926ddeb7f8": {
+    "productName": "Salton vinho nacional frisante gaseificado lunae rosé demi-sec (750 ml)",
+    "totalInCents": 5070,
+    "quantity": 3,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1690,
+    "averageDaysBetweenPurchases": 35
+  },
+  "e1622683-7e72-4f26-90e9-8005ccb8b081": {
+    "productName": "Nestlé iogurte natural com mel (170 g)",
+    "totalInCents": 12223,
+    "quantity": 39,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 313.4102564102564,
+    "averageDaysBetweenPurchases": 16
+  },
+  "3cbb9024-1416-49f8-9289-8aae2faebdf7": {
+    "productName": "Wickbold pão de forma do forno sabor pão na chapa (500 g)",
+    "totalInCents": 1098,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1098,
+    "averageDaysBetweenPurchases": 0
+  },
+  "9911b647-86b9-4521-a8dd-59e9fdcdc116": {
+    "productName": "Banana prata (unidade: 160 g aprox)",
+    "totalInCents": 3332,
+    "quantity": 2,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1666,
+    "averageDaysBetweenPurchases": 35
+  },
+  "b2238758-bce1-49f9-b4c8-a12f631be889": {
+    "productName": "Nestlé biscoito de banana, aveia e canela nesfit (160 g)",
+    "totalInCents": 389,
+    "quantity": 1,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 389,
+    "averageDaysBetweenPurchases": 0
+  },
+  "6b50139a-7403-47e6-8ece-84c729ecefcc": {
+    "productName": "Ovo vermelho grande",
+    "totalInCents": 5970,
+    "quantity": 3,
+    "purchases": [
+      "9ccfe731-f2d6-4de1-ba79-bdd27a476a69",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 1990,
+    "averageDaysBetweenPurchases": 24
+  },
+  "82e9a806-bcfd-4f75-b4b8-977315233e31": {
+    "productName": "Wickbold Pão de forma Do Forno 100% nutrição (500 g)",
+    "totalInCents": 16470,
+    "quantity": 15,
+    "purchases": [
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "46a75cdc-f701-495f-85a7-57cb1ead6769",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 8,
+    "averagePrice": 1098,
+    "averageDaysBetweenPurchases": 6.142857142857143
+  },
+  "264a2921-4635-4222-83f5-a68098eb2562": {
+    "productName": "Clear shampoo anticaspa hidratação intensa bio booster (400ml)",
+    "totalInCents": 2291,
+    "quantity": 1,
+    "purchases": [
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2291,
+    "averageDaysBetweenPurchases": 0
+  },
+  "5583123b-6a2c-412a-967a-6ccda40e8aa3": {
+    "productName": "Colgate creme dental máxima proteção anticáries com flúor (90 g)",
+    "totalInCents": 1196,
+    "quantity": 4,
+    "purchases": [
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 299,
+    "averageDaysBetweenPurchases": 0
+  },
+  "fdb3855f-e9c2-4f44-a779-610158598cee": {
+    "productName": "Soya óleo de soja (900 ml)",
+    "totalInCents": 559,
+    "quantity": 1,
+    "purchases": [
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 559,
+    "averageDaysBetweenPurchases": 0
+  },
+  "8a59d315-3fb8-440c-92f4-535bafa9be07": {
+    "productName": "Mãe terra granola com castanha de caju (400 g)",
+    "totalInCents": 4180,
+    "quantity": 2,
+    "purchases": [
+      "9eb50ba0-9e2b-472c-bcc1-17de0aba60db",
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 2090,
+    "averageDaysBetweenPurchases": 12
+  },
+  "d8273ac8-8ee1-45c1-912b-6dd0aa750b24": {
+    "productName": "Prato fino arroz branco tipo 1 (1 kg)",
+    "totalInCents": 652,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 652,
+    "averageDaysBetweenPurchases": 0
+  },
+  "24b3f427-cf34-432e-8aed-c63d71c397c8": {
+    "productName": "Nivea desodorante antitranspirante roll-on invisible black & white (50 ml)",
+    "totalInCents": 950,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 950,
+    "averageDaysBetweenPurchases": 0
+  },
+  "0473e11e-7abc-45af-87f5-ab78fff3b1fc": {
+    "productName": "Dove desodorante roll on original (50 mL)",
+    "totalInCents": 799,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 799,
+    "averageDaysBetweenPurchases": 0
+  },
+  "282e7a1b-e20c-4c46-81bc-f789f48752ab": {
+    "productName": "Mantiqueira ovos vermelhos extra (20 un)",
+    "totalInCents": 990,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "42567d92-92a5-4815-b0ff-c491d603bb8a": {
+    "productName": "Maratá farinha de milho flocada (500 g)",
+    "totalInCents": 225,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 225,
+    "averageDaysBetweenPurchases": 0
+  },
+  "6d03ff6c-c519-4c4e-9adb-353f58127348": {
+    "productName": "Farnese sabonete líquido hidratante pitaya e framboesa (500 ml)",
+    "totalInCents": 1099,
+    "quantity": 1,
+    "purchases": [
+      "46a75cdc-f701-495f-85a7-57cb1ead6769"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1099,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1af63af3-42d8-4ffa-aaa8-5316444972a6": {
+    "productName": "Quaker aveia integral em flocos regulares (450 g)",
+    "totalInCents": 2160,
+    "quantity": 2,
+    "purchases": [
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1080,
+    "averageDaysBetweenPurchases": 0
+  },
+  "ec9b5249-ed91-49c1-81bb-1ad596cb7389": {
+    "productName": "Bombril esponja multiuso (4 unidades)",
+    "totalInCents": 509,
+    "quantity": 1,
+    "purchases": [
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 509,
+    "averageDaysBetweenPurchases": 0
+  },
+  "44e4f6d1-c908-442a-b380-b8b10e3cbf78": {
+    "productName": "Maçã fuji nacional (unidade: 140 g aprox)",
+    "totalInCents": 489,
+    "quantity": 1,
+    "purchases": [
+      "4343555e-82ee-4934-aba6-6e61deb4bb88"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 489,
+    "averageDaysBetweenPurchases": 0
+  },
+  "ae06cbe0-ef05-427e-8f4a-cc6e4e6aba5d": {
+    "productName": "Achocolatado em pó nescau (730 g)",
+    "totalInCents": 3658,
+    "quantity": 2,
+    "purchases": [
+      "4343555e-82ee-4934-aba6-6e61deb4bb88",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1829,
+    "averageDaysBetweenPurchases": 18
+  },
+  "ac0d7268-d276-4a67-ad61-925f0d14ea08": {
+    "productName": "Da terrinha canela em pó (20 g)",
+    "totalInCents": 279,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 279,
+    "averageDaysBetweenPurchases": 0
+  },
+  "39328ff8-0f41-4867-a52a-c7d700618cd6": {
+    "productName": "Chuchu (unidade: 320 g aprox)",
+    "totalInCents": 461,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 461,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d20a6506-c36a-41ac-98e0-a484a70435ec": {
+    "productName": "Oruam tempero pronto alho, cebola e chimichurri (200 g)",
+    "totalInCents": 519,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 519,
+    "averageDaysBetweenPurchases": 0
+  },
+  "4bceb536-b9d9-4236-9829-30880cefb402": {
+    "productName": "Kisabor tempero baiano (40g)",
+    "totalInCents": 349,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 349,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d2e8b006-277a-4eab-b197-9ef2dd95109e": {
+    "productName": "Kicaldo milho para pipoca premium (500 g)",
+    "totalInCents": 770,
+    "quantity": 2,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 385,
+    "averageDaysBetweenPurchases": 14
+  },
+  "2df33891-b19d-43b3-8a3a-d587d690b420": {
+    "productName": "Yoki batata palha tradicional (105 g)",
+    "totalInCents": 699,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 699,
+    "averageDaysBetweenPurchases": 0
+  },
+  "13b3a3f4-4e3b-4f9b-8220-94ed106dc5f3": {
+    "productName": "Limão taiti (unidade: 170 g aprox)",
+    "totalInCents": 180,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 180,
+    "averageDaysBetweenPurchases": 0
+  },
+  "20a325ba-9cfe-4177-9766-c2237fede2a8": {
+    "productName": "Ypê detergente líquido neutro (500 ml)",
+    "totalInCents": 1912,
+    "quantity": 8,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 239,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e1198f22-e29c-45cc-a2ca-0f67c76546b3": {
+    "productName": "Tomate italiano (unidade: 110 g aprox)",
+    "totalInCents": 0,
+    "quantity": 6,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "963e49d5-b54b-4906-a552-d0003dd8189d": {
+    "productName": "Kisabor chimichurri (15g)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "b14ca496-82d5-41f1-9cfd-fdc877c7a77c"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e9bcf59a-d029-4dd1-bbc3-0e0cbe7f0185": {
+    "productName": "Namorado arroz branco longo fino tipo 1",
+    "totalInCents": 1698,
+    "quantity": 3,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 566,
+    "averageDaysBetweenPurchases": 10
+  },
+  "a5c3a5fb-a128-4888-8f79-951be9022a4f": {
+    "productName": "Kicaldo feijão carioca tipo 1",
+    "totalInCents": 610,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 610,
+    "averageDaysBetweenPurchases": 0
+  },
+  "292becbe-ae1a-49f5-b913-2ba2cd49cb86": {
+    "productName": "Aurora suco de uva tinto integral (1,5 l)",
+    "totalInCents": 1790,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1790,
+    "averageDaysBetweenPurchases": 0
+  },
+  "45ad6ecc-69cc-4bda-9be7-3728356ca8ad": {
+    "productName": "Prat's suco integral de laranja (1,7 l)",
+    "totalInCents": 4440,
+    "quantity": 3,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 1480,
+    "averageDaysBetweenPurchases": 10
+  },
+  "57e6d703-9c8c-44d2-aa33-889657bbcf48": {
+    "productName": "Maçã red importada (unidade: 220 g aprox)",
+    "totalInCents": 1978,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1978,
+    "averageDaysBetweenPurchases": 0
+  },
+  "554211a6-9cec-4110-9d64-5c93927ff8f7": {
+    "productName": "pêra importada (unidade: 300 g aprox)",
+    "totalInCents": 1049,
+    "quantity": 3,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 349.6666666666667,
+    "averageDaysBetweenPurchases": 17
+  },
+  "b3154d54-f8d3-47a8-bbca-fb85e2b81325": {
+    "productName": "Kiwi (550 g)",
+    "totalInCents": 1290,
+    "quantity": 2,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 645,
+    "averageDaysBetweenPurchases": 7
+  },
+  "7b2a9a6a-94f6-4bb2-84e8-178e9c399185": {
+    "productName": "Laranja bahia importada (unidade: 250 g aprox)",
+    "totalInCents": 1611,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1611,
+    "averageDaysBetweenPurchases": 0
+  },
+  "b0fa071a-84d6-4c55-804a-ed7283381154": {
+    "productName": "Batavo iogurte integral com mel sem corante (170 g)",
+    "totalInCents": 5676,
+    "quantity": 24,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 236.5,
+    "averageDaysBetweenPurchases": 7
+  },
+  "a75469a6-3346-426b-b386-63bb2cd4c86e": {
+    "productName": "Rap10 pão tipo tortilha integral",
+    "totalInCents": 898,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 898,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d6a3ae75-4dc3-4c46-b638-9aa6c7e77e3b": {
+    "productName": "Rap10 tapioca (6 un)",
+    "totalInCents": 898,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 898,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1f1fced6-77d1-44af-b316-cdd7d900a62d": {
+    "productName": "Danone requeijão cremoso tradicional (200 g)",
+    "totalInCents": 680,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 680,
+    "averageDaysBetweenPurchases": 0
+  },
+  "fb9e3689-700e-4f80-9ae8-cf2f26d28362": {
+    "productName": "Club social biscoito salgado original",
+    "totalInCents": 3435,
+    "quantity": 4,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 858.75,
+    "averageDaysBetweenPurchases": 6.666666666666667
+  },
+  "3ecdc3a1-a444-4a95-86a0-064e3cd64df8": {
+    "productName": "Sanol desinfetante bactericida perfumado (lavanda)",
+    "totalInCents": 1165,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1165,
+    "averageDaysBetweenPurchases": 0
+  },
+  "9403c6ec-b272-43f3-a4e1-fc01ecf512d0": {
+    "productName": "Poliflor lustra móveis lavanda (200 ml)",
+    "totalInCents": 1070,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1070,
+    "averageDaysBetweenPurchases": 0
+  },
+  "734fe92a-48ef-42b1-a151-7c463024b60f": {
+    "productName": "Ovo caipira (10 un)",
+    "totalInCents": 1980,
+    "quantity": 2,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "c1c02e51-a2f0-4196-a554-eef67a980e8e": {
+    "productName": "Yoki batata palha extra fina (100 g)",
+    "totalInCents": 699,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 699,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1c82b89c-f884-474b-a5ca-ba37bcff5511": {
+    "productName": "Bauducco biscoito integral cereale com cacau, aveia e mel (170 g)",
+    "totalInCents": 430,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 430,
+    "averageDaysBetweenPurchases": 0
+  },
+  "341951cd-5ed3-4c04-9071-f9962d3be151": {
+    "productName": "Nestlé biscoito integral morango e cereais nesfit (160g)",
+    "totalInCents": 696,
+    "quantity": 2,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 348,
+    "averageDaysBetweenPurchases": 7
+  },
+  "7fd74636-64d2-4b4c-a14b-b9ed9b24da61": {
+    "productName": "Bauducco biscoito integral cereale com cacau e castanhas (170 g)",
+    "totalInCents": 1656,
+    "quantity": 4,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d",
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 414,
+    "averageDaysBetweenPurchases": 10
+  },
+  "af41b5bb-839b-401a-acab-382498012fd5": {
+    "productName": "Heinz ketchup (567 g)",
+    "totalInCents": 1299,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1299,
+    "averageDaysBetweenPurchases": 0
+  },
+  "04dba77c-93df-4c1b-95cc-dd93c182317c": {
+    "productName": "Castelo vinagre de álcool (750 ml)",
+    "totalInCents": 295,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 295,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e61c2d22-aefe-4955-8295-1451c5a5fea5": {
+    "productName": "Salsa e cheiro verde (1 un)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "7fef94d9-859f-449f-a388-4703d931e03d"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "94d31774-e60d-40b9-88b8-9d2da5243b20": {
+    "productName": "Nestlé biscoito doce cacau e cereais nesfit (160 g)",
+    "totalInCents": 398,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 398,
+    "averageDaysBetweenPurchases": 0
+  },
+  "94e2bf67-9128-4987-ab62-f5ea86e74844": {
+    "productName": "Sadia filé de peito de frango congelado sem pele sem osso",
+    "totalInCents": 9950,
+    "quantity": 5,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 1990,
+    "averageDaysBetweenPurchases": 6.5
+  },
+  "5a255ac2-9d92-4cc6-87b4-f80a3117a928": {
+    "productName": "Bauducco torrada tradicional",
+    "totalInCents": 675,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 675,
+    "averageDaysBetweenPurchases": 0
+  },
+  "07318733-d919-4cce-9274-ae85cd752f13": {
+    "productName": "Vitalia vinagre de álcool (750 ml)",
+    "totalInCents": 195,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 195,
+    "averageDaysBetweenPurchases": 0
+  },
+  "a9945ce8-ae60-430e-b4a7-356f535c3265": {
+    "productName": "Predilecta molho de tomate tradicional (300 g)",
+    "totalInCents": 278,
+    "quantity": 2,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 139,
+    "averageDaysBetweenPurchases": 0
+  },
+  "a4d1576a-5a07-4344-851a-318946e289b0": {
+    "productName": "Grano brócolis congelado (1 kg)",
+    "totalInCents": 1440,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1440,
+    "averageDaysBetweenPurchases": 0
+  },
+  "9dcef766-c042-4e98-97e2-b8bd7535b034": {
+    "productName": "Tirolez Manteiga de primeira qualidade com sal (200 g)",
+    "totalInCents": 3780,
+    "quantity": 3,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1260,
+    "averageDaysBetweenPurchases": 27
+  },
+  "a7e50731-5b31-4ab2-ac03-4c499d960e57": {
+    "productName": "Seara linguiça tipo calabresa (400 g)",
+    "totalInCents": 1180,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1180,
+    "averageDaysBetweenPurchases": 0
+  },
+  "59d699fa-a7b5-4a2f-a247-f04dbfd0cbc2": {
+    "productName": "Itambé leite integral zero lactose (1 l)",
+    "totalInCents": 4952,
+    "quantity": 8,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 619,
+    "averageDaysBetweenPurchases": 6.5
+  },
+  "228173e9-7c66-45b4-9516-36476c493059": {
+    "productName": "Kitchen papel toalha máxima absorção",
+    "totalInCents": 585,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 585,
+    "averageDaysBetweenPurchases": 0
+  },
+  "93efc878-42e3-4a2e-8aa2-a0914fa98978": {
+    "productName": "Nakaura ovos vermelhos grandes (12 un)",
+    "totalInCents": 1960,
+    "quantity": 2,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 980,
+    "averageDaysBetweenPurchases": 0
+  },
+  "944010b5-fe0e-4446-b44b-72471b5bb3ce": {
+    "productName": "Dona benta macarrão espaguete de sêmola com ovos nº8 (500 g)",
+    "totalInCents": 259,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 259,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f5b952ad-0009-477c-bd4e-532829eb4f43": {
+    "productName": "Hellmann's maionese tradicional (250 g)",
+    "totalInCents": 1258,
+    "quantity": 2,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 629,
+    "averageDaysBetweenPurchases": 13
+  },
+  "c495661d-cd15-4860-9c8b-017df85daeba": {
+    "productName": "Tangerina murcott (unidade: 130 g aprox)",
+    "totalInCents": 1066,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1066,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d14fe258-c2f4-4071-9f78-7e35fb9f69e0": {
+    "productName": "Frimesa doce de leite tradicional (400 g)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "97f9e2ab-8ca0-4103-bc93-8d96fe3957e8": {
+    "productName": "Seara presunto cozido fatiado (180 g)",
+    "totalInCents": 2370,
+    "quantity": 5,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8",
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 474,
+    "averageDaysBetweenPurchases": 6.5
+  },
+  "14cc4ac2-aa7f-45b5-9d2f-0646cd58d98a": {
+    "productName": "Thomaz avental napa (1 unidade)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1f60bad8-0eab-43ff-a6f5-65f8bdbbce41": {
+    "productName": "Tomate sweet grape",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "cb2eafba-6c83-46bd-aea0-6096d9873452": {
+    "productName": "Kitano folha de louro (4 g)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "4d457368-c0f5-457d-92ae-fa0d4896cbc8"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "126ea78f-243f-4a01-b531-8a1146246711": {
+    "productName": "Goiaba vermelha",
+    "totalInCents": 576,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 576,
+    "averageDaysBetweenPurchases": 0
+  },
+  "49308e42-65ec-46e2-8337-9a2e205de671": {
+    "productName": "Intimus absorvente descartável tripla proteção cobertura extra suave com abas (32 un)",
+    "totalInCents": 1590,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1590,
+    "averageDaysBetweenPurchases": 0
+  },
+  "2c33f9b8-5140-40b4-a66d-1be5cf639917": {
+    "productName": "Intimus absorvente descartável noturno cobertura suave com abas (pacote 8 absorventes)",
+    "totalInCents": 850,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 850,
+    "averageDaysBetweenPurchases": 0
+  },
+  "d3c0232a-1abc-4319-9332-fec1a544f1be": {
+    "productName": "Da terrinha goma pronta para tapioca (500 g)",
+    "totalInCents": 499,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 499,
+    "averageDaysBetweenPurchases": 0
+  },
+  "796aace1-cce3-408f-b799-4675c6c6e105": {
+    "productName": "batata lavada",
+    "totalInCents": 615,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 615,
+    "averageDaysBetweenPurchases": 0
+  },
+  "b7439bf8-be2b-4b0f-abb1-b8c6b173788b": {
+    "productName": "Yoki farofa de mandioca temperada tradicional (400 g)",
+    "totalInCents": 639,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 639,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e62fea42-efa7-4bbf-a385-ccd7e8f012f9": {
+    "productName": "limão taiti",
+    "totalInCents": 2331,
+    "quantity": 3,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 777,
+    "averageDaysBetweenPurchases": 10
+  },
+  "1f7af9de-7360-4a1c-b917-2d6970fada84": {
+    "productName": "Kiwi nacional",
+    "totalInCents": 7815,
+    "quantity": 4,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4",
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 4,
+    "averagePrice": 1953.75,
+    "averageDaysBetweenPurchases": 6.666666666666667
+  },
+  "242d6729-184d-47a7-b139-13fc2066e8ee": {
+    "productName": "Banana prata",
+    "totalInCents": 1958,
+    "quantity": 1,
+    "purchases": [
+      "847cd546-6d97-403f-891e-ab85a4d4bba4"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1958,
+    "averageDaysBetweenPurchases": 0
+  },
+  "b2ee5500-d514-4a88-9082-455b5666e2b8": {
+    "productName": "Cabaré bebida mista ice limão (275 ml)",
+    "totalInCents": 594,
+    "quantity": 2,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 297,
+    "averageDaysBetweenPurchases": 0
+  },
+  "8cf033d2-99c0-4f81-8e5f-1024163198b3": {
+    "productName": "Vitarella biscoito doce de maizena tradicional (350 g)",
+    "totalInCents": 489,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 489,
+    "averageDaysBetweenPurchases": 0
+  },
+  "fd6ae294-d4fa-4d65-ab93-7b09dd7398a7": {
+    "productName": "Camil feijão carioca tipo 1",
+    "totalInCents": 605,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 605,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1b6ec475-4e2d-407b-8b94-e9ca970ac315": {
+    "productName": "banana nanica",
+    "totalInCents": 6979,
+    "quantity": 3,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 2326.3333333333335,
+    "averageDaysBetweenPurchases": 7
+  },
+  "4cd6e5c1-a953-4eb0-9034-b0c781db90f6": {
+    "productName": "Nestlé aveia em flocos finos (170 g)",
+    "totalInCents": 430,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 430,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f44e3f95-a643-47a3-a88a-b3a442365583": {
+    "productName": "Omo lava roupas líquido lavagem perfeita (5 l)",
+    "totalInCents": 5190,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 5190,
+    "averageDaysBetweenPurchases": 0
+  },
+  "43858723-dc2c-4f68-b4ed-107007fab5f9": {
+    "productName": "Massa leve massa para pastel de forno (300g)",
+    "totalInCents": 720,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 720,
+    "averageDaysBetweenPurchases": 0
+  },
+  "6ab1040a-33b9-455f-8dc6-e158d971415d": {
+    "productName": "Alho comum",
+    "totalInCents": 2192,
+    "quantity": 2,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1096,
+    "averageDaysBetweenPurchases": 14
+  },
+  "9c5b5b3d-d2c0-420d-9c20-e2173b1f20d3": {
+    "productName": "Président queijo prato fatiado (300 g)",
+    "totalInCents": 1630,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1630,
+    "averageDaysBetweenPurchases": 0
+  },
+  "6c09819c-779f-4cbe-a4ad-56f7db357fc7": {
+    "productName": "Kitano curry (50 g)",
+    "totalInCents": 775,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 775,
+    "averageDaysBetweenPurchases": 0
+  },
+  "355d926e-e1f0-489a-9792-96a76bfd3816": {
+    "productName": "Scotch-brite esponja limpeza extrema (4 un)",
+    "totalInCents": 705,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 705,
+    "averageDaysBetweenPurchases": 0
+  },
+  "049fef59-4b13-44c1-a405-01f0abbb3b94": {
+    "productName": "Uva Vitória (400 g)",
+    "totalInCents": 3270,
+    "quantity": 3,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b",
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 3,
+    "averagePrice": 1090,
+    "averageDaysBetweenPurchases": 7
+  },
+  "382db5a2-21dc-4e17-986d-b2a94fee6370": {
+    "productName": "Ninho leite em pó integral instantâneo (380 g)",
+    "totalInCents": 1940,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1940,
+    "averageDaysBetweenPurchases": 0
+  },
+  "68a1bb65-c64b-421f-857c-54cb0816d85e": {
+    "productName": "Predilecta milho em conserva (280 g)",
+    "totalInCents": 295,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 295,
+    "averageDaysBetweenPurchases": 0
+  },
+  "45a90eb5-e5d3-446d-b2bb-a3881bce8e36": {
+    "productName": "Cebolinha",
+    "totalInCents": 295,
+    "quantity": 1,
+    "purchases": [
+      "0c32f44b-be7a-42b9-af57-880a5271f52b"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 295,
+    "averageDaysBetweenPurchases": 0
+  },
+  "3712c70b-def3-453e-844c-b3c3b9794ded": {
+    "productName": "Sadia · Filé de peito de frango congelado sem pele sem osso (1 kg)",
+    "totalInCents": 1990,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "6e981c66-63a5-48f4-bb11-f4266c56e3e2": {
+    "productName": "Italac · Leite uht semidesnatado (1 L)",
+    "totalInCents": 1078,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 539,
+    "averageDaysBetweenPurchases": 0
+  },
+  "43e88a74-3f4e-4b37-a039-bd8636594e83": {
+    "productName": "Piracanjuba · Leite uht semidesnatado zero lactose (1 L)",
+    "totalInCents": 1198,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 599,
+    "averageDaysBetweenPurchases": 0
+  },
+  "8e44ef14-b4f1-4428-aa32-cd72dcdcca59": {
+    "productName": "Pullman · Pão de forma artesano original (500 g)",
+    "totalInCents": 3294,
+    "quantity": 3,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1098,
+    "averageDaysBetweenPurchases": 7
+  },
+  "d166dbd7-ef6a-4fcd-9fc4-d7fdcf27d592": {
+    "productName": "Itambé · Requeijão tradicional (400 g)",
+    "totalInCents": 2900,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1450,
+    "averageDaysBetweenPurchases": 7
+  },
+  "718bd1e4-e233-4807-a74f-99d784c41bbf": {
+    "productName": "Club Social · Biscoito salgado - Original (12 x 144 g)",
+    "totalInCents": 975,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 975,
+    "averageDaysBetweenPurchases": 0
+  },
+  "7ff77413-f39b-40c2-95f7-20f0529699d9": {
+    "productName": "Aurora · Pão de alho picante (340 g)",
+    "totalInCents": 960,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 960,
+    "averageDaysBetweenPurchases": 0
+  },
+  "fb9f5a19-0855-47f4-ba86-3366fb47772c": {
+    "productName": "Bauducco · Biscoito integral cereale com cacau e castanhas (170 g)",
+    "totalInCents": 459,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 459,
+    "averageDaysBetweenPurchases": 0
+  },
+  "569a4242-79bc-45bd-99f8-b744c2a24de1": {
+    "productName": "Hellmann's · Maionese tradicional (250 g)",
+    "totalInCents": 1258,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 629,
+    "averageDaysBetweenPurchases": 7
+  },
+  "a907e640-2ae3-4775-9aca-03b6a73af2e4": {
+    "productName": "Kicaldo · Feijão carioca tipo 1 (1 kg)",
+    "totalInCents": 610,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 610,
+    "averageDaysBetweenPurchases": 0
+  },
+  "1c7794f5-3ac8-4571-8e7b-78e36cc42400": {
+    "productName": "Namorado · Arroz branco tipo 1 (1 kg)",
+    "totalInCents": 575,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 575,
+    "averageDaysBetweenPurchases": 0
+  },
+  "5d7becf9-7824-4a23-8b5b-2b1e164133aa": {
+    "productName": "Nestlé · Iogurte natural sabor cenoura, laranja e mel (170 g)",
+    "totalInCents": 4780,
+    "quantity": 20,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 239,
+    "averageDaysBetweenPurchases": 7
+  },
+  "809c8d1d-916f-4c4d-add8-002d7ee998e7": {
+    "productName": "Piracanjuba · Creme de leite uht 17% de gordura (200 g)",
+    "totalInCents": 1116,
+    "quantity": 4,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 279,
+    "averageDaysBetweenPurchases": 7
+  },
+  "38d485e0-20f1-44fb-9d08-35065cde0834": {
+    "productName": "Marajoara · Leite condensado semidesnatado (395 g)",
+    "totalInCents": 1138,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 569,
+    "averageDaysBetweenPurchases": 0
+  },
+  "404fc2c4-0629-49ba-aa1e-07782abd9e29": {
+    "productName": "Uva verde thompson",
+    "totalInCents": 990,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "2df1af66-0cb2-443a-b8aa-ac52516dc290": {
+    "productName": "Yoki Farofa de mandioca tradicional temperada",
+    "totalInCents": 639,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 639,
+    "averageDaysBetweenPurchases": 0
+  },
+  "cfcb6257-57fe-497c-97ae-0dca6c337160": {
+    "productName": "Kicaldo · Milho para pipoca premium (500 g)",
+    "totalInCents": 380,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 380,
+    "averageDaysBetweenPurchases": 0
+  },
+  "cb8bc452-15ff-40ca-a359-913ec1206915": {
+    "productName": "Aurora · Suco de uva tinto integral (1,5 L)",
+    "totalInCents": 1790,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1790,
+    "averageDaysBetweenPurchases": 0
+  },
+  "865847e4-4434-4d8f-adc0-60e544774f04": {
+    "productName": "Kitchen · Papel toalha máxima absorção (2 un)",
+    "totalInCents": 585,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 585,
+    "averageDaysBetweenPurchases": 0
+  },
+  "0a7209ad-64f0-4a2f-a653-05901e82d42a": {
+    "productName": "Heinz · Ketchup (567 g)",
+    "totalInCents": 1529,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1529,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f139175c-80c3-47a3-94cb-31a1f6b95780": {
+    "productName": "Claybom · Margarina cremosa com sal (500 g)",
+    "totalInCents": 469,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 469,
+    "averageDaysBetweenPurchases": 0
+  },
+  "8cd25606-9359-42e1-b3e2-0481af9eae2a": {
+    "productName": "Bem Brasil · Batata palito pré frita congelada mais batata! (2 kg)",
+    "totalInCents": 2680,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2680,
+    "averageDaysBetweenPurchases": 0
+  },
+  "59be7157-a857-4a6e-ba74-4ba9f5019d25": {
+    "productName": "Leão · Chá preto ice tea sabor pêssego (1,5 L)",
+    "totalInCents": 719,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 719,
+    "averageDaysBetweenPurchases": 0
+  },
+  "8ddc7260-12ed-4a18-acd2-d63db909603c": {
+    "productName": "Plasnew · Balde 20 l - Sortido",
+    "totalInCents": 2590,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2590,
+    "averageDaysBetweenPurchases": 0
+  },
+  "7b3191ed-899d-4182-97c5-7a9e416f5bdf": {
+    "productName": "Aurora · Queijo mussarela fatiado (300 g)",
+    "totalInCents": 5996,
+    "quantity": 4,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 1499,
+    "averageDaysBetweenPurchases": 7
+  },
+  "bc74c6bc-fb85-4672-ab23-4f8eaa2477f0": {
+    "productName": "Nestlé · Aveia em flocos (170 g)",
+    "totalInCents": 868,
+    "quantity": 2,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2",
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 2,
+    "averagePrice": 434,
+    "averageDaysBetweenPurchases": 7
+  },
+  "dab2b84c-0d23-4835-8cdb-eb6752a9355f": {
+    "productName": "Mãe Terra · Granola com castanha de caju (400 g)",
+    "totalInCents": 2090,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2090,
+    "averageDaysBetweenPurchases": 0
+  },
+  "94cd1410-2f1b-4031-a7c2-c650dfdb2ac7": {
+    "productName": "Scott · Pano reutilizável em rolo multiuso duramax (58 un)",
+    "totalInCents": 990,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "7805e99a-861b-46d3-a6d5-12d1b27635e7": {
+    "productName": "Brasfrut · Polpa de acerola (100 g)",
+    "totalInCents": 0,
+    "quantity": 5,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "65f51bb1-7c43-4ef9-b07c-34202db6e3dc": {
+    "productName": "Celeste · Pano de chão em microfibra (300 g)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "349d8ff5-b453-4ae8-bfb0-f210a5c701f2"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f8850320-431c-408d-8ab1-af187d70461d": {
+    "productName": "Uva verde thompsom sem semente (500 g)",
+    "totalInCents": 950,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 950,
+    "averageDaysBetweenPurchases": 0
+  },
+  "4ac0b38c-bb34-4929-8734-2155d6900e23": {
+    "productName": "Vinícola Aurora · Suco de uva tinto integral (1,5 L)",
+    "totalInCents": 2240,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2240,
+    "averageDaysBetweenPurchases": 0
+  },
+  "40af01f9-7f66-4d02-9373-a4365bc85bd7": {
+    "productName": "Camil · Feijão carioca tipo 1 (1 kg)",
+    "totalInCents": 615,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 615,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e9bbc8df-5812-4c98-a099-0cc1f4d763db": {
+    "productName": "Dove · Sabonete em barra hidratante cremoso original (90 g)",
+    "totalInCents": 1197,
+    "quantity": 3,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 399,
+    "averageDaysBetweenPurchases": 0
+  },
+  "2a3108a6-5be0-415e-aa77-a862ab6663bd": {
+    "productName": "Cotonetes · Hastes flexíveis com pontas de algodão (150 un)",
+    "totalInCents": 1190,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1190,
+    "averageDaysBetweenPurchases": 0
+  },
+  "81ca8e16-f988-4778-80b8-dced11db7133": {
+    "productName": "Wickbold · Pão de forma castanha-do-pará e quinoa integral (500 g)",
+    "totalInCents": 1249,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1249,
+    "averageDaysBetweenPurchases": 0
+  },
+  "10e21d4e-7959-48dc-8925-6356cf1eb41b": {
+    "productName": "Bauducco · Biscoito recheadinho sabor brigadeiro (112 g)",
+    "totalInCents": 398,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 398,
+    "averageDaysBetweenPurchases": 0
+  },
+  "e8c78392-0762-4595-92e0-3f27ebf91513": {
+    "productName": "Cebola",
+    "totalInCents": 128,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 128,
+    "averageDaysBetweenPurchases": 0
+  },
+  "f4d61eab-87f4-4fa5-8563-e3b1817452da": {
+    "productName": "Ypê · Lava louças em pó para máquina (450 g)",
+    "totalInCents": 2190,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 2190,
+    "averageDaysBetweenPurchases": 0
+  },
+  "0d4ecbcf-33ba-4eb4-be9b-1983496f3159": {
+    "productName": "Tay · Água sanitária com cloro ativo (1 L)",
+    "totalInCents": 215,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 215,
+    "averageDaysBetweenPurchases": 0
+  },
+  "cb43fe2c-e844-4d4e-ac05-ca75bb62bf25": {
+    "productName": "Whiskas · Ração seca premium sabor peixe para gatos adultos (2,7 kg)",
+    "totalInCents": 3990,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 3990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "ed4a1787-7ca8-4f1b-b82b-74277d4e2e39": {
+    "productName": "BR Spices · Páprica picante (45 g)",
+    "totalInCents": 1150,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 1150,
+    "averageDaysBetweenPurchases": 0
+  },
+  "7f6f6f28-4f70-422c-8103-5475540c65d8": {
+    "productName": "Extrusa-Pack saco azul para lixo (50 un)",
+    "totalInCents": 990,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 990,
+    "averageDaysBetweenPurchases": 0
+  },
+  "028e2dd1-48ec-4462-9586-a99fdc5326d6": {
+    "productName": "Prato Fino · Arroz branco tipo 1 (1 kg)",
+    "totalInCents": 648,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 648,
+    "averageDaysBetweenPurchases": 0
+  },
+  "3442f2ef-e1f5-43c9-a818-47e72f464981": {
+    "productName": "Itambé · Leite integral zero lactose (1 L)",
+    "totalInCents": 0,
+    "quantity": 2,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  },
+  "46744adc-11ff-4dc3-8872-0769ec82cdab": {
+    "productName": "Massa Leve · Massa para pastel de forno (300 g)",
+    "totalInCents": 0,
+    "quantity": 1,
+    "purchases": [
+      "b32616c2-4c44-4b0e-842f-2f722e51a1b1"
+    ],
+    "purchaseCount": 1,
+    "averagePrice": 0,
+    "averageDaysBetweenPurchases": 0
+  }
+}
