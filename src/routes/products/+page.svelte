@@ -63,7 +63,7 @@
     purchaseCount: metrics.purchaseCount,
     averagePrice: metrics.averagePrice,
     averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
-    variants: metrics.variants
+    variants: metrics.variants || []
   })).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
 </script>
 
