@@ -1,96 +1,134 @@
 <script>
   import { purchaseStore } from '$lib/stores/purchaseStore';
 
-  $: productMetrics = Object.entries($purchaseStore.productMetrics)
+  let sortOrder = 'asc'; // 'asc' ou 'desc'
+  let showVariants = {};
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value / 100);
+  }
+
+  function formatNumber(value) {
+    return new Intl.NumberFormat('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(value);
+  }
+
+  function toggleSort() {
+    sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+  }
+
+  function toggleVariants(productId) {
+    showVariants[productId] = !showVariants[productId];
+    showVariants = showVariants; // Força atualização
+  }
+
+  $: products = Object.entries($purchaseStore.productMetrics)
     .map(([productId, metrics]) => ({
       productId,
-      ...metrics,
-      totalInReais: metrics.totalInCents / 100,
-      averagePriceInReais: metrics.averagePrice / 100
+      ...metrics
     }))
-    .sort((a, b) => b.purchaseCount - a.purchaseCount);
+    .sort((a, b) => {
+      const comparison = a.productName.localeCompare(b.productName, 'pt-BR');
+      return sortOrder === 'asc' ? comparison : -comparison;
+    });
 </script>
 
 <div class="py-10">
   <header>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
       <h1 class="text-3xl font-bold leading-tight text-gray-900">
         Produtos
       </h1>
+      <a
+        href="/products/manage"
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+      >
+        Gerenciar Produtos
+      </a>
     </div>
   </header>
   <main>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="mt-8 flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Produto
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Quantidade Total
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Compras
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Preço Médio
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Total Gasto
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Média de Dias
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  {#each productMetrics as product}
-                    <tr>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-gray-900">
-                          {product.productName}
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                          {product.quantity}
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                          {product.purchaseCount}
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                          R$ {product.averagePriceInReais.toFixed(2)}
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                          R$ {product.totalInReais.toFixed(2)}
-                        </div>
-                      </td>
-                      <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                          {product.averageDaysBetweenPurchases ? 
-                            `${Math.round(product.averageDaysBetweenPurchases)} dias` : 
-                            'N/A'}
-                        </div>
-                      </td>
-                    </tr>
-                  {/each}
-                </tbody>
-              </table>
-            </div>
+      {#if products.length === 0}
+        <div class="text-center py-12">
+          <h3 class="mt-2 text-sm font-medium text-gray-900">Nenhum produto encontrado</h3>
+          <p class="mt-1 text-sm text-gray-500">
+            Comece fazendo upload de notas fiscais na página inicial.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/"
+              class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Fazer upload
+            </a>
           </div>
         </div>
-      </div>
+      {:else}
+        <div class="mt-4">
+          <div class="flex justify-end mb-4">
+            <button
+              on:click={toggleSort}
+              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            >
+              Ordenar {sortOrder === 'asc' ? '↓' : '↑'}
+            </button>
+          </div>
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <ul class="divide-y divide-gray-200">
+              {#each products as product}
+                <li class="px-4 py-4 sm:px-6">
+                  <div class="flex flex-col">
+                    <div class="flex justify-between items-start">
+                      <div class="flex-1">
+                        <div class="flex items-center">
+                          <h3 class="text-lg font-medium text-gray-900">
+                            {product.productName}
+                          </h3>
+                          {#if product.variants?.length > 1}
+                            <button
+                              on:click={() => toggleVariants(product.productId)}
+                              class="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                            >
+                              ({product.variants.length} variantes) {showVariants[product.productId] ? '▼' : '▶'}
+                            </button>
+                          {/if}
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500">
+                          Comprado {product.purchaseCount} {product.purchaseCount === 1 ? 'vez' : 'vezes'} • 
+                          Total: {product.quantity} {product.quantity === 1 ? 'unidade' : 'unidades'}
+                        </p>
+                      </div>
+                      <div class="flex flex-col text-sm text-gray-500 text-right">
+                        <span>Preço médio: {formatCurrency(product.averagePrice)}</span>
+                        <span>Total gasto: {formatCurrency(product.totalInCents)}</span>
+                        {#if product.averageDaysBetweenPurchases > 0}
+                          <span>Média de {formatNumber(product.averageDaysBetweenPurchases)} dias entre compras</span>
+                        {/if}
+                      </div>
+                    </div>
+                    {#if showVariants[product.productId] && product.variants?.length > 1}
+                      <div class="mt-3 pl-4 border-l-2 border-gray-200">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Variantes:</h4>
+                        <ul class="space-y-1">
+                          {#each product.variants as variant}
+                            <li class="text-sm text-gray-600">{variant}</li>
+                          {/each}
+                        </ul>
+                      </div>
+                    {/if}
+                  </div>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+      {/if}
     </div>
   </main>
 </div> 
