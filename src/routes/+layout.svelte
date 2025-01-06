@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import { page } from '$app/stores';
+  import { base } from '$app/paths';
   import { purchaseStore } from '$lib/stores/purchaseStore';
   import { shoppingListStore } from '$lib/stores/shoppingListStore';
   import { onMount } from 'svelte';
@@ -20,29 +21,29 @@
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <a
-              href="/"
-              class:active={$page.url.pathname === '/'}
+              href="{base}/"
+              class:active={$page.url.pathname === `${base}/`}
               class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
             >
               Upload
             </a>
             <a
-              href="/purchases"
-              class:active={$page.url.pathname === '/purchases'}
+              href="{base}/purchases"
+              class:active={$page.url.pathname === `${base}/purchases`}
               class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
             >
               Compras
             </a>
             <a
-              href="/products"
-              class:active={$page.url.pathname === '/products'}
+              href="{base}/products"
+              class:active={$page.url.pathname === `${base}/products`}
               class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
             >
               Produtos
             </a>
             <a
-              href="/shopping-lists"
-              class:active={$page.url.pathname === '/shopping-lists'}
+              href="{base}/shopping-lists"
+              class:active={$page.url.pathname === `${base}/shopping-lists`}
               class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
             >
               Listas de Compras

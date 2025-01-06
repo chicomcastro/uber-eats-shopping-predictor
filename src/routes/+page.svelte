@@ -4,6 +4,7 @@
   import { v4 as uuidv4 } from 'uuid';
   import moment from 'moment';
   import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
+  import { base } from '$app/paths';
 
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -466,7 +467,7 @@
                     {processedFiles.size} {processedFiles.size === 1 ? 'arquivo processado' : 'arquivos processados'}.
                     {#if processedFiles.size > 0}
                       <br>
-                      Você pode ver os resultados nas páginas de <a href="/purchases" class="underline">Compras</a> e <a href="/products" class="underline">Produtos</a>.
+                      Você pode ver os resultados nas páginas de <a href="{base}/purchases" class="underline">Compras</a> e <a href="{base}/products" class="underline">Produtos</a>.
                     {/if}
                   </p>
                 </div>
