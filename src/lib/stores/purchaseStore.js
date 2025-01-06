@@ -21,7 +21,9 @@ function createPurchaseStore() {
     
     // Adiciona um novo produto base
     addProduct: (productName) => update(state => {
-      const existingProduct = state.products.find(p => p.name.toLowerCase() === productName.toLowerCase());
+      if (!productName) return state;
+
+      const existingProduct = state.products.find(p => p?.name?.toLowerCase() === productName.toLowerCase());
       if (existingProduct) return state;
 
       const newProduct = {
@@ -32,7 +34,37 @@ function createPurchaseStore() {
 
       return {
         ...state,
-        products: [...state.products, newProduct]
+        products: [...(state.products || []), newProduct]
+      };
+    }),
+
+    // Atualiza o nome de um produto
+    updateProductName: (productId, newName) => update(state => {
+      if (!productId || !newName) return state;
+
+      const existingProduct = state.products.find(p => p?.name?.toLowerCase() === newName.toLowerCase() && p.productId !== productId);
+      if (existingProduct) return state;
+
+      const products = state.products.map(product => {
+        if (product.productId === productId) {
+          return { ...product, name: newName };
+        }
+        return product;
+      });
+
+      // Atualiza também as métricas para refletir o novo nome
+      const productMetrics = { ...state.productMetrics };
+      if (productMetrics[productId]) {
+        productMetrics[productId] = {
+          ...productMetrics[productId],
+          productName: newName
+        };
+      }
+
+      return {
+        ...state,
+        products,
+        productMetrics
       };
     }),
 
@@ -92,8 +124,10 @@ function createPurchaseStore() {
 
           metrics.averageDaysBetweenPurchases = daysBetweenPurchases / (sortedPurchases.length - 1);
         }
+      });
 
-        // Converte o Set de variantes para array
+      // Converte os Sets de variantes para arrays antes de retornar
+      Object.values(productMetrics).forEach(metrics => {
         metrics.variants = Array.from(metrics.variants);
       });
 
@@ -154,7 +188,10 @@ function createPurchaseStore() {
 
           metrics.averageDaysBetweenPurchases = daysBetweenPurchases / (sortedPurchases.length - 1);
         }
+      });
 
+      // Converte os Sets de variantes para arrays antes de retornar
+      Object.values(productMetrics).forEach(metrics => {
         metrics.variants = Array.from(metrics.variants);
       });
 

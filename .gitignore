@@ -7,3 +7,5 @@ src/output/*
 # Keep directory structure with .gitkeep
 !src/input/.gitkeep
 !src/output/.gitkeep
+
+.backup
