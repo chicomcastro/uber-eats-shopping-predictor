@@ -7,5 +7,8 @@ export default defineConfig({
     fs: {
       allow: ['..']
     }
+  },
+  optimizeDeps: {
+    include: ['pdfjs-dist']
   }
 }); 
