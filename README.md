@@ -8,6 +8,10 @@ Foi construída para ajudar a entender os hábitos de compra em supermercados pe
 
 Você pode encontrar seus recibos do Uber Eats em https://www.ubereats.com/br/orders.
 
+## Demo
+
+Você pode acessar a versão demo em: https://chicomcastro.github.io/market-purchases-control/
+
 ## Funcionalidades
 
 - Análise de recibos em PDF
@@ -47,6 +51,32 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Deploy
+
+O projeto está configurado para deploy automático no GitHub Pages. Cada push na branch `main` irá disparar o workflow de deploy através do GitHub Actions.
+
+### Deploy Manual
+
+Se você quiser fazer o deploy manualmente:
+
+1. Build do projeto:
+```bash
+npm run build
+```
+
+2. O build será gerado na pasta `build/`
+
+3. Para testar localmente o build:
+```bash
+npm run preview
+```
+
+### Configuração do GitHub Pages
+
+1. No seu repositório, vá em Settings > Pages
+2. Em "Source", selecione "GitHub Actions"
+3. O deploy será feito automaticamente a cada push na branch main
 
 ## Estrutura do Projeto
 

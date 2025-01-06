@@ -1,0 +1,10 @@
+{
+	"/": [
+		"src/routes/+page.js"
+	],
+	"/products": [],
+	"/products/manage": [],
+	"/purchases": [],
+	"/purchases/[id]": [],
+	"/shopping-lists": []
+}

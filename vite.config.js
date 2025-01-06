@@ -10,5 +10,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['pdfjs-dist']
-  }
+  },
+  base: '/market-purchases-control/'
 }); 

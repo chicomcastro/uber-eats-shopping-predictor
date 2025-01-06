@@ -1,5 +1,7 @@
 <script>
   import { purchaseStore } from '$lib/stores/purchaseStore';
+  import moment from 'moment';
+  moment.locale('pt-br');
 
   let sortOrder = 'asc'; // 'asc' ou 'desc'
   let showVariants = {};
@@ -19,6 +21,10 @@
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     }).format(value);
+  }
+
+  function formatDate(date) {
+    return moment(date).format('DD [de] MMMM [de] YYYY');
   }
 
   function toggleSort() {
@@ -50,6 +56,23 @@
     }
   }
 
+  function getLastPurchaseDate(purchaseIds) {
+    let lastDate = null;
+
+    const purchases = Object.values($purchaseStore.purchases || {});
+
+    for (const purchase of purchases) {
+      if (purchaseIds.includes(purchase.id)) {
+        const purchaseDate = new Date(purchase.date);
+        if (!lastDate || purchaseDate > lastDate) {
+          lastDate = purchaseDate;
+        }
+      }
+    }
+
+    return lastDate;
+  }
+
   $: if (showEditModal && editProductInput) {
     editProductInput.value = editingProduct?.name || '';
     setTimeout(() => editProductInput.focus(), 50);
@@ -63,7 +86,8 @@
     purchaseCount: metrics.purchaseCount,
     averagePrice: metrics.averagePrice,
     averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
-    variants: metrics.variants || []
+    variants: metrics.variants || [],
+    lastPurchaseDate: getLastPurchaseDate(metrics.purchases)
   })).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
 </script>
 
@@ -175,6 +199,14 @@
                             </dd>
                           </div>
                           <div>
+                            <dt class="text-sm font-medium text-gray-500">
+                              Última compra
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900">
+                              {product.lastPurchaseDate ? formatDate(product.lastPurchaseDate) : 'Nunca'}
+                            </dd>
+                          </div>
+                          <div class="sm:col-span-3">
                             <dt class="text-sm font-medium text-gray-500">
                               Variantes
                             </dt>
