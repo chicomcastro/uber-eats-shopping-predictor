@@ -2,6 +2,7 @@
   import '../app.css';
   import { page } from '$app/stores';
   import { purchaseStore } from '$lib/stores/purchaseStore';
+  import { shoppingListStore } from '$lib/stores/shoppingListStore';
   import { onMount } from 'svelte';
 
   onMount(() => {
@@ -38,6 +39,13 @@
               class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
             >
               Produtos
+            </a>
+            <a
+              href="/shopping-lists"
+              class:active={$page.url.pathname === '/shopping-lists'}
+              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent"
+            >
+              Listas de Compras
             </a>
           </div>
         </div>
