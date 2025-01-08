@@ -5,10 +5,20 @@
   moment.locale('pt-br');
 
   let sortOrder = 'asc'; // 'asc' ou 'desc'
+  let sortField = 'name'; // campo atual de ordenação
   let showVariants = {};
   let showEditModal = false;
   let editProductInput;
   let editingProduct = null;
+  let showOnlyUnassociated = false;
+  let showSortOptions = false;
+
+  const sortOptions = [
+    { id: 'name', label: 'Nome' },
+    { id: 'averagePrice', label: 'Preço médio' },
+    { id: 'purchaseCount', label: 'Número de compras' },
+    { id: 'lastPurchaseDate', label: 'Data da última compra' }
+  ];
 
   function formatCurrency(value) {
     return new Intl.NumberFormat('pt-BR', {
@@ -30,6 +40,21 @@
 
   function toggleSort() {
     sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+  }
+
+  function setSortField(field) {
+    if (sortField === field) {
+      toggleSort();
+    } else {
+      sortField = field;
+      sortOrder = 'asc';
+    }
+    showSortOptions = false;
+  }
+
+  function getSortIcon(field) {
+    if (sortField !== field) return '';
+    return sortOrder === 'asc' ? '↑' : '↓';
   }
 
   function toggleVariants(productId) {
@@ -79,17 +104,38 @@
     setTimeout(() => editProductInput.focus(), 50);
   }
 
-  $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
-    productId,
-    name: metrics.productName,
-    totalInCents: metrics.totalInCents,
-    quantity: metrics.quantity,
-    purchaseCount: metrics.purchaseCount,
-    averagePrice: metrics.averagePrice,
-    averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
-    variants: metrics.variants || [],
-    lastPurchaseDate: getLastPurchaseDate(metrics.purchases)
-  })).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+  $: products = Object.entries($purchaseStore.productMetrics || {})
+    .map(([productId, metrics]) => ({
+      productId,
+      name: metrics.productName,
+      totalInCents: metrics.totalInCents,
+      quantity: metrics.quantity,
+      purchaseCount: metrics.purchaseCount,
+      averagePrice: metrics.averagePrice,
+      averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
+      variants: metrics.variants || [],
+      lastPurchaseDate: getLastPurchaseDate(metrics.purchases),
+      hasAssociation: $purchaseStore.productAssociations && Object.values($purchaseStore.productAssociations).includes(productId)
+    }))
+    .filter(product => !showOnlyUnassociated || !product.hasAssociation)
+    .sort((a, b) => {
+      const direction = sortOrder === 'asc' ? 1 : -1;
+      
+      switch (sortField) {
+        case 'name':
+          return direction * a.name.localeCompare(b.name, 'pt-BR');
+        case 'averagePrice':
+          return direction * (a.averagePrice - b.averagePrice);
+        case 'purchaseCount':
+          return direction * (a.purchaseCount - b.purchaseCount);
+        case 'lastPurchaseDate':
+          const dateA = a.lastPurchaseDate ? new Date(a.lastPurchaseDate).getTime() : 0;
+          const dateB = b.lastPurchaseDate ? new Date(b.lastPurchaseDate).getTime() : 0;
+          return direction * (dateA - dateB);
+        default:
+          return 0;
+      }
+    });
 </script>
 
 <div class="py-10">
@@ -125,13 +171,39 @@
         </div>
       {:else}
         <div class="mt-4">
-          <div class="flex justify-end mb-4">
+          <div class="flex justify-end mb-4 space-x-4">
             <button
-              on:click={toggleSort}
-              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              on:click={() => showOnlyUnassociated = !showOnlyUnassociated}
+              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md {showOnlyUnassociated ? 'text-white bg-indigo-600 hover:bg-indigo-700' : 'text-gray-700 bg-gray-100 hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Ordenar {sortOrder === 'asc' ? '↓' : '↑'}
+              {showOnlyUnassociated ? 'Mostrar todos' : 'Mostrar sem associação'}
             </button>
+            <div class="relative">
+              <button
+                on:click={() => showSortOptions = !showSortOptions}
+                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
+                Ordenar por {sortOptions.find(opt => opt.id === sortField).label} {getSortIcon(sortField)}
+              </button>
+              {#if showSortOptions}
+                <div 
+                  class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10"
+                  on:mouseleave={() => showSortOptions = false}
+                >
+                  <div class="py-1" role="menu" aria-orientation="vertical">
+                    {#each sortOptions as option}
+                      <button
+                        on:click={() => setSortField(option.id)}
+                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        role="menuitem"
+                      >
+                        {option.label} {getSortIcon(option.id)}
+                      </button>
+                    {/each}
+                  </div>
+                </div>
+              {/if}
+            </div>
           </div>
           <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
