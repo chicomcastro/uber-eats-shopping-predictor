@@ -70,20 +70,24 @@
       });
       console.log('Aguardando promise do PDF...');
       const pdf = await loadingTask.promise;
-      console.log('PDF carregado, obtendo primeira página...');
-      const page = await pdf.getPage(1);
-      console.log('Extraindo texto da página...');
-      const textContent = await page.getTextContent();
-      const text = textContent.items.map(item => item.str).join('\n');
-      console.log('Texto extraído:', text);
+      console.log('PDF carregado, obtendo todas as páginas...');
+      
+      let allText = '';
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        console.log(`Extraindo texto da página ${pageNum}...`);
+        const page = await pdf.getPage(pageNum);
+        const textContent = await page.getTextContent();
+        allText += textContent.items.map(item => item.str).join('\n') + '\n';
+      }
+      console.log('Texto extraído de todas as páginas:', allText);
 
-      if (!text) {
+      if (!allText) {
         console.log('Nenhum texto encontrado no PDF');
         return null;
       }
 
       // Extract date
-      const dateMatch = text.match(/(\d+) de (\w+) de (\d{4})/);
+      const dateMatch = allText.match(/(\d+) de (\w+) de (\d{4})/);
       if (!dateMatch) {
         console.log('Não foi possível encontrar a data no formato esperado');
         return null;
@@ -107,12 +111,12 @@
 
       // Extract total value
       let total;
-      const totalMatch = text.match(/Total\s*\nR\$\s*([\d,]+)/);
+      const totalMatch = allText.match(/Total\s*\nR\$\s*([\d,]+)/);
       if (!totalMatch) {
         console.log('Não foi possível encontrar o valor total no formato esperado');
         console.log('Tentando formato alternativo...');
         // Try alternative format
-        const alternativeTotalMatch = text.match(/Total\s*R\$\s*([\d,]+)/);
+        const alternativeTotalMatch = allText.match(/Total\s*R\$\s*([\d,]+)/);
         if (!alternativeTotalMatch) {
           console.log('Não foi possível encontrar o valor total em nenhum formato');
           return null;
@@ -125,7 +129,7 @@
       }
 
       const products = [];
-      const lines = text.split("\n");
+      const lines = allText.split("\n");
       console.log('Número de linhas encontradas:', lines.length);
 
       // Ajustando o padrão de busca para produtos
