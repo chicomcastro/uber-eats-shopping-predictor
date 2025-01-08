@@ -37,6 +37,7 @@ declare module '$env/static/private' {
 	export const npm_config_global_prefix: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const ZDOTDIR: string;
+	export const CURSOR_TRACE_ID: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const MallocNanoZone: string;
 	export const COLOR: string;
@@ -80,8 +81,8 @@ declare module '$env/static/private' {
 	export const npm_config_user_agent: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const GIT_ASKPASS: string;
-	export const HOMEBREW_CELLAR: string;
 	export const INFOPATH: string;
+	export const HOMEBREW_CELLAR: string;
 	export const DISPLAY: string;
 	export const BRENDI_WEB_APP_PATH: string;
 	export const NPM_READ_TOKEN: string;
@@ -131,6 +132,7 @@ declare module '$env/dynamic/private' {
 		npm_config_global_prefix: string;
 		TERM_PROGRAM_VERSION: string;
 		ZDOTDIR: string;
+		CURSOR_TRACE_ID: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		MallocNanoZone: string;
 		COLOR: string;
@@ -174,8 +176,8 @@ declare module '$env/dynamic/private' {
 		npm_config_user_agent: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		GIT_ASKPASS: string;
-		HOMEBREW_CELLAR: string;
 		INFOPATH: string;
+		HOMEBREW_CELLAR: string;
 		DISPLAY: string;
 		BRENDI_WEB_APP_PATH: string;
 		NPM_READ_TOKEN: string;
