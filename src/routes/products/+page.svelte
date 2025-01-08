@@ -154,58 +154,65 @@
   </header>
   <main>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      {#if products.length === 0}
-        <div class="text-center py-12">
-          <h3 class="mt-2 text-sm font-medium text-gray-900">Nenhum produto encontrado</h3>
-          <p class="mt-1 text-sm text-gray-500">
-            Comece fazendo upload de notas fiscais na página inicial.
-          </p>
-          <div class="mt-6">
-            <a
-              href="{base}/"
-              class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      <div class="mt-4">
+        <div class="flex justify-end mb-4 space-x-4">
+          <button
+            on:click={() => showOnlyUnassociated = !showOnlyUnassociated}
+            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md {showOnlyUnassociated ? 'text-white bg-indigo-600 hover:bg-indigo-700' : 'text-gray-700 bg-gray-100 hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            {showOnlyUnassociated ? 'Mostrar todos' : 'Mostrar sem associação'}
+          </button>
+          <div class="relative">
+            <button
+              on:click={() => showSortOptions = !showSortOptions}
+              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
-              Fazer upload
-            </a>
+              Ordenar por {sortOptions.find(opt => opt.id === sortField).label} {getSortIcon(sortField)}
+            </button>
+            {#if showSortOptions}
+              <div 
+                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10"
+                on:mouseleave={() => showSortOptions = false}
+              >
+                <div class="py-1" role="menu" aria-orientation="vertical">
+                  {#each sortOptions as option}
+                    <button
+                      on:click={() => setSortField(option.id)}
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      role="menuitem"
+                    >
+                      {option.label} {getSortIcon(option.id)}
+                    </button>
+                  {/each}
+                </div>
+              </div>
+            {/if}
           </div>
         </div>
-      {:else}
-        <div class="mt-4">
-          <div class="flex justify-end mb-4 space-x-4">
-            <button
-              on:click={() => showOnlyUnassociated = !showOnlyUnassociated}
-              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md {showOnlyUnassociated ? 'text-white bg-indigo-600 hover:bg-indigo-700' : 'text-gray-700 bg-gray-100 hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              {showOnlyUnassociated ? 'Mostrar todos' : 'Mostrar sem associação'}
-            </button>
-            <div class="relative">
-              <button
-                on:click={() => showSortOptions = !showSortOptions}
-                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                Ordenar por {sortOptions.find(opt => opt.id === sortField).label} {getSortIcon(sortField)}
-              </button>
-              {#if showSortOptions}
-                <div 
-                  class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10"
-                  on:mouseleave={() => showSortOptions = false}
-                >
-                  <div class="py-1" role="menu" aria-orientation="vertical">
-                    {#each sortOptions as option}
-                      <button
-                        on:click={() => setSortField(option.id)}
-                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        role="menuitem"
-                      >
-                        {option.label} {getSortIcon(option.id)}
-                      </button>
-                    {/each}
-                  </div>
-                </div>
+
+        {#if products.length === 0}
+          <div class="text-center py-12">
+            <h3 class="mt-2 text-sm font-medium text-gray-900">Nenhum produto encontrado</h3>
+            <p class="mt-1 text-sm text-gray-500">
+              {#if showOnlyUnassociated}
+                Não há produtos sem associação.
+              {:else}
+                Comece fazendo upload de notas fiscais na página inicial.
               {/if}
-            </div>
+            </p>
+            {#if !showOnlyUnassociated}
+              <div class="mt-6">
+                <a
+                  href="{base}/"
+                  class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Fazer upload
+                </a>
+              </div>
+            {/if}
           </div>
-          <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        {:else}
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
             <div class="px-4 py-5 sm:px-6">
               <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Produtos
@@ -295,8 +302,8 @@
               </ul>
             </div>
           </div>
-        </div>
-      {/if}
+        {/if}
+      </div>
     </div>
   </main>
 </div>

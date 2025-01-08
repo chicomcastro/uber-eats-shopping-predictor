@@ -10,6 +10,7 @@
   let addProductInput;
   let editProductInput;
   let editingProduct = null;
+  let showOnlyUnassociated = false;
 
   function formatCurrency(value) {
     return new Intl.NumberFormat('pt-BR', {
@@ -106,7 +107,9 @@
       // Remove duplicatas
       index === self.findIndex(p => p.productName === pp.productName) &&
       // Aplica o filtro de busca
-      pp.productName.toLowerCase().includes(searchTerm.toLowerCase())
+      pp.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      // Aplica o filtro de não associados
+      (!showOnlyUnassociated || !productAssociations?.[pp.productName])
     )
     .sort((a, b) => {
       // Garante que ambos os produtos têm nomes válidos
@@ -172,6 +175,14 @@
                 placeholder="Buscar produtos..."
               >
             </div>
+          </div>
+          <div class="ml-4">
+            <button
+              on:click={() => showOnlyUnassociated = !showOnlyUnassociated}
+              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md {showOnlyUnassociated ? 'text-white bg-indigo-600 hover:bg-indigo-700' : 'text-gray-700 bg-gray-100 hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              {showOnlyUnassociated ? 'Mostrar todos' : 'Mostrar sem associação'}
+            </button>
           </div>
         </div>
 
