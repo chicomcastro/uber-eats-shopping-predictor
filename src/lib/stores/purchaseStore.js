@@ -252,7 +252,10 @@ function createPurchaseStore() {
 
           metrics.averageDaysBetweenPurchases = daysBetweenPurchases / (sortedPurchases.length - 1);
         }
+      });
 
+      // Converte os Sets de variantes para arrays antes de retornar
+      Object.values(productMetrics).forEach(metrics => {
         metrics.variants = Array.from(metrics.variants);
       });
 

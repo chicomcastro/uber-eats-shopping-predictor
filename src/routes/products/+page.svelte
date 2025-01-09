@@ -135,18 +135,25 @@
   }
 
   $: products = Object.entries($purchaseStore.productMetrics || {})
-    .map(([productId, metrics]) => ({
-      productId,
-      name: metrics.productName,
-      totalInCents: metrics.totalInCents,
-      quantity: metrics.quantity,
-      purchaseCount: metrics.purchaseCount,
-      averagePrice: metrics.averagePrice,
-      averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
-      variants: metrics.variants || [],
-      lastPurchaseDate: getLastPurchaseDate(metrics.purchases),
-      hasAssociation: $purchaseStore.productAssociations && Object.values($purchaseStore.productAssociations).includes(productId)
-    }))
+    .map(([productId, metrics]) => {
+      const variants = metrics.variants || [];
+      const hasAssociation = variants.some(variant => 
+        $purchaseStore.productAssociations && $purchaseStore.productAssociations[variant]
+      );
+
+      return {
+        productId,
+        name: metrics.productName,
+        totalInCents: metrics.totalInCents,
+        quantity: metrics.quantity,
+        purchaseCount: metrics.purchaseCount,
+        averagePrice: metrics.averagePrice,
+        averageDaysBetweenPurchases: metrics.averageDaysBetweenPurchases,
+        variants,
+        lastPurchaseDate: getLastPurchaseDate(metrics.purchases),
+        hasAssociation
+      };
+    })
     .filter(product => !showOnlyUnassociated || !product.hasAssociation)
     .sort((a, b) => {
       const direction = sortOrder === 'asc' ? 1 : -1;
