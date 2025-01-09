@@ -5,6 +5,8 @@
   let newListName = '';
   let showCreateModal = false;
   let showMenus = {};
+  let showSuggestions = {};
+  let expandedSuggestions = {};
 
   function toggleMenu(listId) {
     showMenus[listId] = !showMenus[listId];
@@ -61,6 +63,72 @@
     if (event.key === 'Enter' && showCreateModal) {
       handleCreateList();
     }
+  }
+
+  function getLastPurchaseDate(purchaseIds) {
+    let lastDate = null;
+
+    const purchases = Object.values($purchaseStore.purchases || {});
+
+    for (const purchase of purchases) {
+      if (purchaseIds.includes(purchase.id)) {
+        const purchaseDate = new Date(purchase.date);
+        if (!lastDate || purchaseDate > lastDate) {
+          lastDate = purchaseDate;
+        }
+      }
+    }
+
+    return lastDate;
+  }
+
+  function getSuggestedProducts(list) {
+    const today = new Date();
+    const metrics = $purchaseStore.productMetrics || {};
+    
+    return Object.entries(metrics)
+      .map(([productId, metrics]) => {
+        // Pula se o produto já está na lista
+        if (list.items.some(item => item.productId === productId)) {
+          return null;
+        }
+
+        const lastPurchaseDate = getLastPurchaseDate(metrics.purchases);
+        if (!lastPurchaseDate) return null;
+
+        const daysSinceLastPurchase = Math.floor((today - lastPurchaseDate) / (1000 * 60 * 60 * 24));
+        const shouldSuggest = daysSinceLastPurchase >= metrics.averageDaysBetweenPurchases;
+
+        if (!shouldSuggest) return null;
+
+        return {
+          productId,
+          name: metrics.productName,
+          daysSinceLastPurchase,
+          averageDays: metrics.averageDaysBetweenPurchases,
+          lastPurchaseDate,
+          urgency: daysSinceLastPurchase / metrics.averageDaysBetweenPurchases
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.urgency - a.urgency);
+  }
+
+  function toggleSuggestions(listId) {
+    showSuggestions[listId] = !showSuggestions[listId];
+    showSuggestions = showSuggestions;
+  }
+
+  function addSuggestedProduct(list, product) {
+    shoppingListStore.addItem(list.id, {
+      productId: product.productId,
+      name: product.name
+    });
+  }
+
+  function toggleExpandSuggestions(listId) {
+    expandedSuggestions[listId] = !expandedSuggestions[listId];
+    expandedSuggestions = expandedSuggestions;
   }
 
   $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
@@ -238,7 +306,53 @@
                             <option value={product.productId}>{product.name}</option>
                           {/each}
                         </select>
+                        <button
+                          on:click={() => toggleSuggestions(list.id)}
+                          class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          title="Ver sugestões de produtos"
+                        >
+                          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                          </svg>
+                        </button>
                       </div>
+                      {#if showSuggestions[list.id]}
+                        <div class="mt-3">
+                          <h5 class="text-sm font-medium text-gray-700 mb-2">Sugestões baseadas no histórico:</h5>
+                          {#if getSuggestedProducts(list).length === 0}
+                            <p class="text-sm text-gray-500">Nenhuma sugestão disponível no momento.</p>
+                          {:else}
+                            <div class="space-y-2">
+                              {#each getSuggestedProducts(list).slice(0, expandedSuggestions[list.id] ? undefined : 10) as product}
+                                <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                  <div class="flex-1">
+                                    <p class="text-sm font-medium text-gray-900">{product.name}</p>
+                                    <p class="text-xs text-gray-500">
+                                      Última compra: {formatDate(product.lastPurchaseDate)}
+                                      <span class="mx-1">•</span>
+                                      Média: {product.averageDays.toFixed(1)} dias
+                                    </p>
+                                  </div>
+                                  <button
+                                    on:click={() => addSuggestedProduct(list, product)}
+                                    class="ml-4 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                  >
+                                    Adicionar
+                                  </button>
+                                </div>
+                              {/each}
+                              {#if getSuggestedProducts(list).length > 10}
+                                <button
+                                  on:click={() => toggleExpandSuggestions(list.id)}
+                                  class="mt-2 w-full text-center text-sm text-indigo-600 hover:text-indigo-800"
+                                >
+                                  {expandedSuggestions[list.id] ? 'Ver menos sugestões' : `Ver mais ${getSuggestedProducts(list).length - 10} sugestões`}
+                                </button>
+                              {/if}
+                            </div>
+                          {/if}
+                        </div>
+                      {/if}
                     </div>
                   </div>
                 </li>
