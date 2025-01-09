@@ -15,6 +15,30 @@
     });
   }
 
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value / 100);
+  }
+
+  function getProductAveragePrice(productId) {
+    const metrics = $purchaseStore.productMetrics;
+    if (!metrics) return 0;
+    
+    const product = Object.entries(metrics).find(([id]) => id === productId);
+    if (!product) return 0;
+
+    return product[1].averagePrice;
+  }
+
+  function calculateListTotal(list) {
+    return list.items.reduce((total, item) => {
+      const averagePrice = getProductAveragePrice(item.productId);
+      return total + (averagePrice * item.quantity);
+    }, 0);
+  }
+
   function handleCreateList() {
     if (newListName.trim()) {
       shoppingListStore.addList(newListName.trim());
@@ -31,7 +55,8 @@
 
   $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
     productId,
-    name: metrics.productName
+    name: metrics.productName,
+    averagePrice: metrics.averagePrice
   })).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
 </script>
 
@@ -84,6 +109,9 @@
                         <p class="text-sm text-gray-500">
                           Última atualização: {formatDate(list.updatedAt)}
                         </p>
+                        <p class="text-sm font-medium text-indigo-600 mt-1">
+                          Total previsto: {formatCurrency(calculateListTotal(list))}
+                        </p>
                       </div>
                       <div class="mt-3">
                         <h5 class="text-sm font-medium text-gray-700">Itens:</h5>
@@ -93,15 +121,41 @@
                           <ul class="mt-2 space-y-2">
                             {#each list.items as item}
                               <li class="flex items-center justify-between">
-                                <span class="text-sm text-gray-900">{item.name}</span>
+                                <div class="flex-1">
+                                  <span class="text-sm text-gray-900">{item.name}</span>
+                                  <span class="text-sm text-gray-500 ml-2">
+                                    ({formatCurrency(getProductAveragePrice(item.productId))}/un)
+                                  </span>
+                                </div>
                                 <div class="flex items-center space-x-2">
-                                  <input
-                                    type="number"
-                                    min="1"
-                                    value={item.quantity}
-                                    on:change={(e) => shoppingListStore.updateItemQuantity(list.id, item.productId, parseInt(e.target.value))}
-                                    class="w-16 text-sm border-gray-300 rounded-md"
-                                  >
+                                  <div class="flex items-center">
+                                    <button
+                                      on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, Math.max(1, item.quantity - 1))}
+                                      class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
+                                    >
+                                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                                      </svg>
+                                    </button>
+                                    <input
+                                      type="number"
+                                      min="1"
+                                      value={item.quantity}
+                                      on:change={(e) => shoppingListStore.updateItemQuantity(list.id, item.productId, parseInt(e.target.value) || 1)}
+                                      class="w-14 text-sm border-gray-300 rounded-md mx-1 text-center"
+                                    >
+                                    <button
+                                      on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, item.quantity + 1)}
+                                      class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
+                                    >
+                                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                      </svg>
+                                    </button>
+                                  </div>
+                                  <span class="text-sm text-gray-500 w-24 text-right">
+                                    {formatCurrency(getProductAveragePrice(item.productId) * item.quantity)}
+                                  </span>
                                   <button
                                     on:click={() => shoppingListStore.removeItem(list.id, item.productId)}
                                     class="text-red-600 hover:text-red-800"
