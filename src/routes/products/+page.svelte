@@ -1,5 +1,6 @@
 <script>
   import { purchaseStore } from '$lib/stores/purchaseStore';
+  import { shoppingListStore } from '$lib/stores/shoppingListStore';
   import { base } from '$app/paths';
   import moment from 'moment';
   moment.locale('pt-br');
@@ -12,6 +13,9 @@
   let editingProduct = null;
   let showOnlyUnassociated = false;
   let showSortOptions = false;
+  let showSnackbar = false;
+  let snackbarProduct = null;
+  let snackbarTimeout;
 
   const sortOptions = [
     { id: 'name', label: 'Nome' },
@@ -97,6 +101,32 @@
     }
 
     return lastDate;
+  }
+
+  function getLatestShoppingList() {
+    if ($shoppingListStore.length === 0) return null;
+    return $shoppingListStore[$shoppingListStore.length - 1];
+  }
+
+  function showAddedToListSnackbar(product) {
+    if (snackbarTimeout) clearTimeout(snackbarTimeout);
+    snackbarProduct = product;
+    showSnackbar = true;
+    snackbarTimeout = setTimeout(() => {
+      showSnackbar = false;
+      snackbarProduct = null;
+    }, 5000);
+  }
+
+  function addToLatestList(product) {
+    const latestList = getLatestShoppingList();
+    if (latestList) {
+      shoppingListStore.addItem(latestList.id, {
+        productId: product.productId,
+        name: product.name
+      });
+      showAddedToListSnackbar(product);
+    }
   }
 
   $: if (showEditModal && editProductInput) {
@@ -222,20 +252,34 @@
               <ul class="divide-y divide-gray-200">
                 {#each products as product}
                   <li class="px-4 py-4 sm:px-6">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-start justify-between">
                       <div class="flex-1">
-                        <div class="flex items-center">
-                          <h4 class="text-lg font-medium text-gray-900">
-                            {product.name}
-                          </h4>
-                          <button
-                            on:click={() => openEditModal(product)}
-                            class="ml-2 text-indigo-600 hover:text-indigo-800"
-                          >
-                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                          </button>
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center">
+                            <h4 class="text-lg font-medium text-gray-900">
+                              {product.name}
+                            </h4>
+                            <button
+                              on:click={() => openEditModal(product)}
+                              class="ml-2 text-indigo-600 hover:text-indigo-800"
+                            >
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                              </svg>
+                            </button>
+                          </div>
+                          {#if getLatestShoppingList()}
+                            <button
+                              on:click={() => addToLatestList(product)}
+                              class="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                              title="Adicionar à última lista de compras"
+                            >
+                              <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                              </svg>
+                              Adicionar à lista
+                            </button>
+                          {/if}
                         </div>
                         <div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
                           <div>
@@ -307,6 +351,33 @@
     </div>
   </main>
 </div>
+
+{#if showSnackbar && snackbarProduct}
+  <div class="fixed bottom-4 right-4 z-50">
+    <div class="bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-3">
+      <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <div>
+        <p class="font-medium">{snackbarProduct.name} adicionado à lista</p>
+        <a
+          href="{base}/shopping-lists"
+          class="text-sm text-indigo-300 hover:text-indigo-200"
+        >
+          Ver listas de compras
+        </a>
+      </div>
+      <button
+        on:click={() => { showSnackbar = false; snackbarProduct = null; }}
+        class="ml-4 text-gray-400 hover:text-gray-300"
+      >
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+{/if}
 
 {#if showEditModal}
   <div class="fixed z-10 inset-0 overflow-y-auto">
