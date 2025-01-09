@@ -4,6 +4,16 @@
 
   let newListName = '';
   let showCreateModal = false;
+  let showMenus = {};
+
+  function toggleMenu(listId) {
+    showMenus[listId] = !showMenus[listId];
+    showMenus = showMenus; // Força atualização
+  }
+
+  function closeAllMenus() {
+    showMenus = {};
+  }
 
   function formatDate(isoString) {
     return new Date(isoString).toLocaleDateString('pt-BR', {
@@ -99,9 +109,41 @@
                 <li class="px-4 py-4 sm:px-6">
                   <div class="flex items-center justify-between">
                     <div class="flex-1">
-                      <h4 class="text-lg font-medium text-gray-900">
-                        {list.name}
-                      </h4>
+                      <div class="flex items-center justify-between">
+                        <h4 class="text-lg font-medium text-gray-900">
+                          {list.name}
+                        </h4>
+                        <div class="relative">
+                          <button
+                            on:click|stopPropagation={() => toggleMenu(list.id)}
+                            class="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                          >
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                            </svg>
+                          </button>
+                          {#if showMenus[list.id]}
+                            <div class="fixed inset-0 z-10" on:click={closeAllMenus}></div>
+                            <div 
+                              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20"
+                              on:click|stopPropagation
+                            >
+                              <div class="py-1" role="menu">
+                                <button
+                                  on:click={() => {
+                                    shoppingListStore.deleteList(list.id);
+                                    closeAllMenus();
+                                  }}
+                                  class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Excluir lista
+                                </button>
+                              </div>
+                            </div>
+                          {/if}
+                        </div>
+                      </div>
                       <div class="mt-1">
                         <p class="text-sm text-gray-500">
                           Criada em: {formatDate(list.createdAt)}
@@ -186,12 +228,6 @@
                             <option value={product.productId}>{product.name}</option>
                           {/each}
                         </select>
-                        <button
-                          on:click={() => shoppingListStore.deleteList(list.id)}
-                          class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
-                        >
-                          Excluir Lista
-                        </button>
                       </div>
                     </div>
                   </div>
