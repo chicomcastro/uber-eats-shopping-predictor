@@ -131,6 +131,96 @@
     expandedSuggestions = expandedSuggestions;
   }
 
+  function formatListContent(list) {
+    const lines = [
+      `Lista de Compras: ${list.name}`,
+      `Criada em: ${formatDate(list.createdAt)}`,
+      '',
+      'Itens:',
+      ...list.items.map(item => `- ${item.name} (${item.quantity}x)`),
+      '',
+      `Total previsto: ${formatCurrency(calculateListTotal(list))}`
+    ];
+    return lines.join('\n');
+  }
+
+  function copyToClipboard(list) {
+    const content = formatListContent(list);
+    navigator.clipboard.writeText(content);
+    closeAllMenus();
+  }
+
+  function shareByEmail(list) {
+    const content = formatListContent(list);
+    const subject = encodeURIComponent(`Lista de Compras: ${list.name}`);
+    const body = encodeURIComponent(content);
+    
+    // Copia o conteúdo para a área de transferência
+    navigator.clipboard.writeText(content);
+    
+    // Abre os principais serviços de webmail em uma nova aba
+    const emailServices = [
+      { name: 'Gmail', url: 'https://mail.google.com/mail/?view=cm&fs=1' },
+      { name: 'Outlook', url: 'https://outlook.live.com/mail/0/deeplink/compose' },
+      { name: 'Yahoo Mail', url: 'https://compose.mail.yahoo.com/' }
+    ];
+
+    // Cria um modal com as opções de webmail
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.top = '50%';
+    modal.style.left = '50%';
+    modal.style.transform = 'translate(-50%, -50%)';
+    modal.style.backgroundColor = 'white';
+    modal.style.padding = '20px';
+    modal.style.borderRadius = '8px';
+    modal.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+    modal.style.zIndex = '9999';
+    modal.innerHTML = `
+      <div style="margin-bottom: 16px;">
+        <h3 style="font-size: 16px; font-weight: 500; color: #374151; margin-bottom: 8px;">Escolha um serviço de email:</h3>
+        <p style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">O conteúdo da lista foi copiado para sua área de transferência.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          ${emailServices.map(service => `
+            <a href="${service.url}" target="_blank" style="display: block; padding: 8px 16px; background-color: #F3F4F6; color: #374151; text-decoration: none; border-radius: 4px; font-size: 14px; text-align: center; hover:bg-gray-200;">
+              Abrir ${service.name}
+            </a>
+          `).join('')}
+        </div>
+        <button onclick="this.parentElement.parentElement.remove(); document.getElementById('email-modal-overlay').remove();" style="width: 100%; margin-top: 16px; padding: 8px 16px; background-color: #E5E7EB; color: #374151; border: none; border-radius: 4px; font-size: 14px; cursor: pointer;">
+          Fechar
+        </button>
+      </div>
+    `;
+
+    // Adiciona o overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'email-modal-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.zIndex = '9998';
+    overlay.onclick = () => {
+      overlay.remove();
+      modal.remove();
+    };
+
+    document.body.appendChild(overlay);
+    document.body.appendChild(modal);
+    
+    closeAllMenus();
+  }
+
+  function shareByWhatsApp(list) {
+    const content = formatListContent(list);
+    const text = encodeURIComponent(content);
+    window.open(`https://wa.me/?text=${text}`);
+    closeAllMenus();
+  }
+
   $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
     productId,
     name: metrics.productName,
@@ -197,6 +287,31 @@
                               on:click|stopPropagation
                             >
                               <div class="py-1" role="menu">
+                                <div class="px-4 py-2 text-xs text-gray-500">
+                                  Compartilhar
+                                </div>
+                                <button
+                                  on:click={() => copyToClipboard(list)}
+                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Copiar conteúdo
+                                </button>
+                                <button
+                                  on:click={() => shareByWhatsApp(list)}
+                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Enviar por WhatsApp
+                                </button>
+                                <button
+                                  on:click={() => shareByEmail(list)}
+                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Enviar por email
+                                </button>
+                                <div class="border-t border-gray-100"></div>
                                 <button
                                   on:click={() => {
                                     shoppingListStore.duplicateList(list.id);
