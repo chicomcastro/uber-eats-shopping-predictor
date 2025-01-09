@@ -221,6 +221,23 @@
     closeAllMenus();
   }
 
+  function createGoogleCalendarEvent(list) {
+    const content = formatListContent(list);
+    const title = encodeURIComponent(`Lista de Compras: ${list.name}`);
+    const details = encodeURIComponent(content);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    // Formata a data para o formato YYYYMMDD
+    const date = tomorrow.toISOString().split('T')[0].replace(/-/g, '');
+    
+    // Cria a URL do Google Calendar com os parâmetros
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&dates=${date}/${date}`;
+    
+    window.open(url);
+    closeAllMenus();
+  }
+
   $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
     productId,
     name: metrics.productName,
@@ -271,7 +288,7 @@
                         <h4 class="text-lg font-medium text-gray-900">
                           {list.name}
                         </h4>
-                        <div class="relative">
+                        <div class="relative" style="position: static;">
                           <button
                             on:click|stopPropagation={() => toggleMenu(list.id)}
                             class="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
@@ -283,7 +300,8 @@
                           {#if showMenus[list.id]}
                             <div class="fixed inset-0 z-10" on:click={closeAllMenus}></div>
                             <div 
-                              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20"
+                              class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20"
+                              style="position: fixed; right: 1rem; max-height: calc(100vh - 6rem); overflow-y: auto;"
                               on:click|stopPropagation
                             >
                               <div class="py-1" role="menu">
@@ -310,6 +328,13 @@
                                   role="menuitem"
                                 >
                                   Enviar por email
+                                </button>
+                                <button
+                                  on:click={() => createGoogleCalendarEvent(list)}
+                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Criar lembrete no Google Agenda
                                 </button>
                                 <div class="border-t border-gray-100"></div>
                                 <button
