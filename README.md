@@ -21,6 +21,7 @@ Você pode acessar a versão demo em: https://chicomcastro.github.io/market-purc
 - Gerenciamento de listas de compras
 - Interface web moderna e responsiva
 - Armazenamento local dos dados
+- Exportação e importação de dados em JSON
 
 ## Tecnologias
 
@@ -101,6 +102,8 @@ npm run preview
 - Upload de recibos em PDF
 - Processamento automático dos dados
 - Visualização do status do upload
+- Exportação dos dados para arquivo JSON
+- Importação de dados de backup
 
 ### Compras (/purchases)
 - Histórico completo de compras
@@ -131,6 +134,11 @@ A aplicação utiliza o localStorage do navegador para:
 - Dados de compras processados
 - Listas de compras
 - Preferências do usuário
+
+Você pode exportar todos os dados para um arquivo JSON e importá-los posteriormente, permitindo:
+- Backup dos seus dados
+- Transferência de dados entre navegadores
+- Compartilhamento de dados entre dispositivos
 
 ## Contribuindo
 
