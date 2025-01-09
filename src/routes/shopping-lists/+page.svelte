@@ -131,6 +131,16 @@
                               <div class="py-1" role="menu">
                                 <button
                                   on:click={() => {
+                                    shoppingListStore.duplicateList(list.id);
+                                    closeAllMenus();
+                                  }}
+                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  role="menuitem"
+                                >
+                                  Duplicar lista
+                                </button>
+                                <button
+                                  on:click={() => {
                                     shoppingListStore.deleteList(list.id);
                                     closeAllMenus();
                                   }}

@@ -70,6 +70,27 @@ function createShoppingListStore() {
         deleteList: (listId) => {
             update(lists => lists.filter(l => l.id !== listId));
             saveToStorage();
+        },
+        duplicateList: (listId) => {
+            update(lists => {
+                const originalList = lists.find(l => l.id === listId);
+                if (originalList) {
+                    const newList = {
+                        id: crypto.randomUUID(),
+                        name: `${originalList.name} (cópia)`,
+                        items: originalList.items.map(item => ({
+                            productId: item.productId,
+                            name: item.name,
+                            quantity: item.quantity
+                        })),
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    };
+                    return [...lists, newList];
+                }
+                return lists;
+            });
+            saveToStorage();
         }
     };
 
