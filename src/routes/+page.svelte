@@ -389,10 +389,31 @@
 
 <div class="py-10">
   <header>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
       <h1 class="text-3xl font-bold leading-tight text-gray-900">
         Upload de Notas Fiscais
       </h1>
+      <button
+        on:click={() => {
+          const data = {
+            marketPurchases: JSON.parse(localStorage.getItem('market-purchases-data')),
+            shoppingLists: JSON.parse(localStorage.getItem('shopping-lists'))
+          };
+          const jsonString = JSON.stringify(data, null, 2);
+          const blob = new Blob([jsonString], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `market-purchases-control-backup-${new Date().toISOString().split('T')[0]}.json`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }}
+        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+      >
+        Exportar Dados
+      </button>
     </div>
   </header>
   <main>
