@@ -5,6 +5,7 @@
   import moment from 'moment';
   import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
   import { base } from '$app/paths';
+  import { shoppingListStore } from '$lib/stores/shoppingListStore';
 
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -12,9 +13,15 @@
     accepted: [],
     rejected: []
   };
+  let jsonFiles = {
+    accepted: [],
+    rejected: []
+  };
 
   let isProcessing = false;
+  let isProcessingJson = false;
   let processedFiles = new Set();
+  let processedJsonFiles = new Set();
   let showSuccess = false;
   let successTimeout;
   let errorMessage = '';
@@ -385,13 +392,57 @@
       }, 3000);
     }
   }
+
+  async function handleJsonFilesSelect(e) {
+    const { acceptedFiles, fileRejections } = e.detail;
+    jsonFiles.accepted = acceptedFiles;
+    jsonFiles.rejected = fileRejections;
+    processedJsonFiles.clear();
+    isProcessingJson = true;
+    errorMessage = '';
+    showError = false;
+
+    for (const file of acceptedFiles) {
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+
+        if (data.marketPurchases) {
+          localStorage.setItem('market-purchases-data', JSON.stringify(data.marketPurchases));
+          purchaseStore.loadFromStorage();
+        }
+
+        if (data.shoppingLists) {
+          localStorage.setItem('shopping-lists', JSON.stringify(data.shoppingLists));
+          const unsubscribe = shoppingListStore.subscribe(() => {});
+          unsubscribe();
+        }
+
+        processedJsonFiles.add(file.name);
+      } catch (error) {
+        console.error('Error processing JSON file:', error);
+        errorMessage = `Erro ao processar o arquivo ${file.name}: ${error.message}`;
+        showError = true;
+      }
+    }
+
+    isProcessingJson = false;
+    
+    if (processedJsonFiles.size > 0) {
+      showSuccess = true;
+      if (successTimeout) clearTimeout(successTimeout);
+      successTimeout = setTimeout(() => {
+        showSuccess = false;
+      }, 3000);
+    }
+  }
 </script>
 
 <div class="py-10">
   <header>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
       <h1 class="text-3xl font-bold leading-tight text-gray-900">
-        Upload de Notas Fiscais
+        Upload de Dados
       </h1>
       <button
         on:click={() => {
@@ -420,6 +471,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="px-4 py-8 sm:px-0">
         <div class="border-4 border-dashed border-gray-200 rounded-lg p-10">
+          <h2 class="text-lg font-medium text-gray-900 mb-4">Upload de Notas Fiscais</h2>
           <Dropzone
             accept=".pdf"
             on:drop={handleFilesSelect}
@@ -450,6 +502,43 @@
                   Arraste e solte arquivos PDF aqui, ou clique para selecionar
                 </p>
                 <p class="mt-1 text-xs text-gray-500">PDF até 10MB</p>
+              {/if}
+            </div>
+          </Dropzone>
+        </div>
+
+        <div class="border-4 border-dashed border-gray-200 rounded-lg p-10 mt-8">
+          <h2 class="text-lg font-medium text-gray-900 mb-4">Importar Backup</h2>
+          <Dropzone
+            accept=".json"
+            on:drop={handleJsonFilesSelect}
+            class="w-full h-64 flex items-center justify-center"
+          >
+            <div class="text-center">
+              {#if isProcessingJson}
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                <p class="mt-4 text-sm text-gray-600">
+                  Processando arquivos...
+                </p>
+              {:else}
+                <svg
+                  class="mx-auto h-12 w-12 text-gray-400"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 48 48"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p class="mt-1 text-sm text-gray-600">
+                  Arraste e solte arquivos JSON aqui, ou clique para selecionar
+                </p>
+                <p class="mt-1 text-xs text-gray-500">Arquivos de backup (.json)</p>
               {/if}
             </div>
           </Dropzone>
@@ -535,6 +624,52 @@
             <h3 class="text-lg font-medium text-red-900">Arquivos rejeitados</h3>
             <ul class="mt-2 divide-y divide-gray-200">
               {#each files.rejected as rejection}
+                <li class="py-3 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <span class="ml-2 flex-1 w-0 truncate text-red-600">
+                      {rejection.file.name} - {rejection.errors[0].message}
+                    </span>
+                  </div>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
+
+        {#if jsonFiles.accepted.length > 0}
+          <div class="mt-4">
+            <h3 class="text-lg font-medium text-gray-900">Arquivos de backup aceitos</h3>
+            <ul class="mt-2 divide-y divide-gray-200">
+              {#each jsonFiles.accepted as file}
+                <li class="py-3 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <span class="ml-2 flex-1 w-0 truncate">
+                      {file.name}
+                    </span>
+                    {#if processedJsonFiles.has(file.name)}
+                      <span class="ml-2 text-green-600">
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </span>
+                    {/if}
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <span class="font-medium text-indigo-600">
+                      {(file.size / 1024 / 1024).toFixed(2)} MB
+                    </span>
+                  </div>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
+
+        {#if jsonFiles.rejected.length > 0}
+          <div class="mt-4">
+            <h3 class="text-lg font-medium text-red-900">Arquivos de backup rejeitados</h3>
+            <ul class="mt-2 divide-y divide-gray-200">
+              {#each jsonFiles.rejected as rejection}
                 <li class="py-3 flex justify-between items-center">
                   <div class="flex items-center">
                     <span class="ml-2 flex-1 w-0 truncate text-red-600">
