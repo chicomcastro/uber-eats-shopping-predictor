@@ -5,12 +5,16 @@ const STORAGE_KEY = 'shopping-lists';
 
 function createShoppingListStore() {
     const initialLists = browser ? JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') : [];
-    const { subscribe, set, update } = writable(initialLists);
+    const initialFavorites = browser ? JSON.parse(localStorage.getItem(STORAGE_KEY + '_favorites') || '[]') : [];
+    const { subscribe, set, update } = writable({
+        lists: initialLists,
+        favorites: initialFavorites
+    });
 
     return {
         subscribe,
         addList: (name) => {
-            update(lists => {
+            update(state => {
                 const newList = {
                     id: crypto.randomUUID(),
                     name,
@@ -18,13 +22,13 @@ function createShoppingListStore() {
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 };
-                return [...lists, newList];
+                return { ...state, lists: [...state.lists, newList] };
             });
             saveToStorage();
         },
         addItem: (listId, product) => {
-            update(lists => {
-                const list = lists.find(l => l.id === listId);
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
                 if (list) {
                     const existingItem = list.items.find(item => item.productId === product.productId);
                     if (existingItem) {
@@ -39,24 +43,24 @@ function createShoppingListStore() {
                     }
                     list.updatedAt = new Date().toISOString();
                 }
-                return [...lists];
+                return { ...state, lists: [...state.lists] };
             });
             saveToStorage();
         },
         removeItem: (listId, productId) => {
-            update(lists => {
-                const list = lists.find(l => l.id === listId);
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
                 if (list) {
                     list.items = list.items.filter(item => item.productId !== productId);
                     list.updatedAt = new Date().toISOString();
                 }
-                return [...lists];
+                return { ...state, lists: [...state.lists] };
             });
             saveToStorage();
         },
         updateItemQuantity: (listId, productId, quantity) => {
-            update(lists => {
-                const list = lists.find(l => l.id === listId);
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
                 if (list) {
                     const item = list.items.find(item => item.productId === productId);
                     if (item) {
@@ -64,17 +68,20 @@ function createShoppingListStore() {
                         list.updatedAt = new Date().toISOString();
                     }
                 }
-                return [...lists];
+                return { ...state, lists: [...state.lists] };
             });
             saveToStorage();
         },
         deleteList: (listId) => {
-            update(lists => lists.filter(l => l.id !== listId));
+            update(state => ({
+                ...state,
+                lists: state.lists.filter(l => l.id !== listId)
+            }));
             saveToStorage();
         },
         duplicateList: (listId) => {
-            update(lists => {
-                const originalList = lists.find(l => l.id === listId);
+            update(state => {
+                const originalList = state.lists.find(l => l.id === listId);
                 if (originalList) {
                     const newList = {
                         id: crypto.randomUUID(),
@@ -88,15 +95,15 @@ function createShoppingListStore() {
                         createdAt: new Date().toISOString(),
                         updatedAt: new Date().toISOString()
                     };
-                    return [...lists, newList];
+                    return { ...state, lists: [...state.lists, newList] };
                 }
-                return lists;
+                return state;
             });
             saveToStorage();
         },
         toggleItemChecked: (listId, productId) => {
-            update(lists => {
-                const list = lists.find(l => l.id === listId);
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
                 if (list) {
                     const item = list.items.find(item => item.productId === productId);
                     if (item) {
@@ -104,7 +111,20 @@ function createShoppingListStore() {
                         list.updatedAt = new Date().toISOString();
                     }
                 }
-                return [...lists];
+                return { ...state, lists: [...state.lists] };
+            });
+            saveToStorage();
+        },
+        toggleFavorite: (productId) => {
+            update(state => {
+                const favorites = state.favorites || [];
+                const index = favorites.indexOf(productId);
+                
+                if (index === -1) {
+                    return { ...state, favorites: [...favorites, productId] };
+                } else {
+                    return { ...state, favorites: favorites.filter(id => id !== productId) };
+                }
             });
             saveToStorage();
         }
@@ -112,8 +132,9 @@ function createShoppingListStore() {
 
     function saveToStorage() {
         if (browser) {
-            const unsubscribe = subscribe(currentLists => {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(currentLists));
+            const unsubscribe = subscribe(state => {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state.lists));
+                localStorage.setItem(STORAGE_KEY + '_favorites', JSON.stringify(state.favorites));
             });
             unsubscribe();
         }
