@@ -381,11 +381,21 @@
                           <ul class="mt-2 space-y-2">
                             {#each list.items as item}
                               <li class="flex items-center justify-between">
-                                <div class="flex-1">
-                                  <span class="text-sm text-gray-900">{item.name}</span>
-                                  <span class="text-sm text-gray-500 ml-2">
-                                    ({formatCurrency(getProductAveragePrice(item.productId))}/un)
-                                  </span>
+                                <div class="flex-1 flex items-center">
+                                  <input
+                                    type="checkbox"
+                                    checked={item.checked}
+                                    on:change={() => shoppingListStore.toggleItemChecked(list.id, item.productId)}
+                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-3"
+                                  >
+                                  <div class="flex-1">
+                                    <span class="text-sm text-gray-900" class:line-through={item.checked} class:text-gray-400={item.checked}>
+                                      {item.name}
+                                    </span>
+                                    <span class="text-sm text-gray-500 ml-2">
+                                      ({formatCurrency(getProductAveragePrice(item.productId))}/un)
+                                    </span>
+                                  </div>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                   <div class="flex items-center">

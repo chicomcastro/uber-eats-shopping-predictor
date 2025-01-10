@@ -33,7 +33,8 @@ function createShoppingListStore() {
                         list.items.push({
                             productId: product.productId,
                             name: product.name,
-                            quantity: 1
+                            quantity: 1,
+                            checked: false
                         });
                     }
                     list.updatedAt = new Date().toISOString();
@@ -81,7 +82,8 @@ function createShoppingListStore() {
                         items: originalList.items.map(item => ({
                             productId: item.productId,
                             name: item.name,
-                            quantity: item.quantity
+                            quantity: item.quantity,
+                            checked: false
                         })),
                         createdAt: new Date().toISOString(),
                         updatedAt: new Date().toISOString()
@@ -89,6 +91,20 @@ function createShoppingListStore() {
                     return [...lists, newList];
                 }
                 return lists;
+            });
+            saveToStorage();
+        },
+        toggleItemChecked: (listId, productId) => {
+            update(lists => {
+                const list = lists.find(l => l.id === listId);
+                if (list) {
+                    const item = list.items.find(item => item.productId === productId);
+                    if (item) {
+                        item.checked = !item.checked;
+                        list.updatedAt = new Date().toISOString();
+                    }
+                }
+                return [...lists];
             });
             saveToStorage();
         }
