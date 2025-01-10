@@ -280,7 +280,66 @@ function createPurchaseStore() {
       if (typeof window !== 'undefined') {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
-          set(JSON.parse(stored));
+          const data = JSON.parse(stored);
+          
+          // Recalcula as métricas dos produtos
+          const productMetrics = {};
+          data.purchaseProducts.forEach(pp => {
+            const associatedProductId = data.productAssociations[pp.productName] || null;
+            if (!associatedProductId) return;
+
+            if (!productMetrics[associatedProductId]) {
+              const product = data.products.find(p => p.productId === associatedProductId);
+              if (!product) return;
+
+              productMetrics[associatedProductId] = {
+                productName: product.name,
+                totalInCents: 0,
+                quantity: 0,
+                purchases: [],
+                purchaseCount: 0,
+                averagePrice: 0,
+                averageDaysBetweenPurchases: 0,
+                variants: new Set()
+              };
+            }
+
+            const metrics = productMetrics[associatedProductId];
+            metrics.totalInCents += pp.totalPriceCents;
+            metrics.quantity += pp.quantity;
+            if (!metrics.purchases.includes(pp.purchaseId)) {
+              metrics.purchases.push(pp.purchaseId);
+              metrics.purchaseCount += 1;
+            }
+            metrics.variants.add(pp.productName);
+            metrics.averagePrice = metrics.totalInCents / metrics.quantity;
+
+            const sortedPurchases = metrics.purchases
+              .map(pid => data.purchases.find(p => p.id === pid))
+              .filter(Boolean)
+              .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (sortedPurchases.length >= 2) {
+              const daysBetweenPurchases = sortedPurchases.reduce((total, purchase, index) => {
+                if (index === 0) return 0;
+                const daysDiff = (new Date(purchase.date) - new Date(sortedPurchases[index - 1].date)) / (1000 * 60 * 60 * 24);
+                return total + daysDiff;
+              }, 0);
+
+              metrics.averageDaysBetweenPurchases = daysBetweenPurchases / (sortedPurchases.length - 1);
+            }
+          });
+
+          // Converte os Sets de variantes para arrays antes de retornar
+          Object.values(productMetrics).forEach(metrics => {
+            metrics.variants = Array.from(metrics.variants);
+          });
+
+          // Atualiza o store com os dados carregados e as métricas recalculadas
+          set({
+            ...data,
+            productMetrics
+          });
         }
       }
     }

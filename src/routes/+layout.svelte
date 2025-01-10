@@ -5,9 +5,13 @@
   import { purchaseStore } from '$lib/stores/purchaseStore';
   import { shoppingListStore } from '$lib/stores/shoppingListStore';
   import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
+
+  const isLoaded = writable(false);
 
   onMount(() => {
     purchaseStore.loadFromStorage();
+    isLoaded.set(true);
   });
 </script>
 
@@ -54,9 +58,18 @@
     </div>
   </nav>
 
-  <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <slot />
-  </main>
+  {#if $isLoaded}
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <slot />
+    </main>
+  {:else}
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="text-center">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+        <p class="mt-4 text-gray-600">Carregando...</p>
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style>
