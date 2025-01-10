@@ -115,6 +115,19 @@ function createShoppingListStore() {
             });
             saveToStorage();
         },
+        toggleAllItems: (listId, checked) => {
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
+                if (list) {
+                    list.items.forEach(item => {
+                        item.checked = checked;
+                    });
+                    list.updatedAt = new Date().toISOString();
+                }
+                return { ...state, lists: [...state.lists] };
+            });
+            saveToStorage();
+        },
         toggleFavorite: (productId) => {
             update(state => {
                 const favorites = state.favorites || [];

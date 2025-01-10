@@ -432,7 +432,20 @@
                     </div>
 
                     <div class="flex flex-col space-y-2">
-                      <h5 class="text-sm font-medium text-gray-700">Itens:</h5>
+                      <div class="flex items-center justify-between">
+                        <h5 class="text-sm font-medium text-gray-700">Itens:</h5>
+                        {#if list.items.length > 0}
+                          <div class="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={list.items.every(item => item.checked)}
+                              on:change={(e) => shoppingListStore.toggleAllItems(list.id, e.target.checked)}
+                              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-2"
+                            >
+                            <span class="text-sm text-gray-500">Selecionar todos</span>
+                          </div>
+                        {/if}
+                      </div>
                       {#if list.items.length === 0}
                         <p class="text-sm text-gray-500">Nenhum item adicionado</p>
                       {:else}
