@@ -379,7 +379,7 @@
                           <p class="text-sm text-gray-500 mt-1">Nenhum item adicionado</p>
                         {:else}
                           <ul class="mt-2 space-y-2">
-                            {#each list.items as item}
+                            {#each list.items.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')) as item}
                               <li class="flex items-center justify-between">
                                 <div class="flex-1 flex items-center">
                                   <input
