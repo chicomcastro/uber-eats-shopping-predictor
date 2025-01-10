@@ -93,6 +93,11 @@
           return null;
         }
 
+        // Pula se não tem média de dias entre compras (dados insuficientes)
+        if (!metrics.averageDaysBetweenPurchases) {
+          return null;
+        }
+
         const lastPurchaseDate = getLastPurchaseDate(metrics.purchases);
         if (!lastPurchaseDate) return null;
 
