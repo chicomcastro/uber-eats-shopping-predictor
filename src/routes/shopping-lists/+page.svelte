@@ -7,6 +7,8 @@
   let showMenus = {};
   let showSuggestions = {};
   let expandedSuggestions = {};
+  let editingListId = null;
+  let editingListName = '';
 
   function toggleMenu(listId) {
     showMenus[listId] = !showMenus[listId];
@@ -265,6 +267,29 @@
     closeAllMenus();
   }
 
+  function handleEditListName() {
+    if (editingListId && editingListName.trim()) {
+      shoppingListStore.updateListName(editingListId, editingListName.trim());
+      editingListId = null;
+      editingListName = '';
+    }
+  }
+
+  function startEditingListName(list) {
+    editingListId = list.id;
+    editingListName = list.name;
+    closeAllMenus();
+  }
+
+  function handleEditListNameKeyPress(event) {
+    if (event.key === 'Enter') {
+      handleEditListName();
+    } else if (event.key === 'Escape') {
+      editingListId = null;
+      editingListName = '';
+    }
+  }
+
   $: products = Object.entries($purchaseStore.productMetrics || {}).map(([productId, metrics]) => ({
     productId,
     name: metrics.productName,
@@ -307,252 +332,259 @@
         <div class="mt-4">
           <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <ul class="divide-y divide-gray-200">
-              {#each $shoppingListStore.lists as list}
+              {#each $shoppingListStore.lists.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)) as list}
                 <li class="px-4 py-4 sm:px-6">
-                  <div class="flex items-center justify-between">
-                    <div class="flex-1">
-                      <div class="flex items-center justify-between">
-                        <h4 class="text-lg font-medium text-gray-900">
-                          {list.name}
-                        </h4>
-                        <div class="relative" style="position: static;">
-                          <button
-                            on:click|stopPropagation={() => toggleMenu(list.id)}
-                            class="p-2 text-gray-400 hover:text-gray-600 focus:outline-none"
-                          >
-                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                            </svg>
-                          </button>
-                          {#if showMenus[list.id]}
-                            <div class="fixed inset-0 z-10" on:click={closeAllMenus}></div>
-                            <div 
-                              class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-20"
-                              style="position: fixed; right: 1rem; max-height: calc(100vh - 6rem); overflow-y: auto;"
-                              on:click|stopPropagation
+                  <div class="flex flex-col space-y-4">
+                    <div class="flex items-center justify-between">
+                      <div class="flex-1 min-w-0">
+                        {#if editingListId === list.id}
+                          <div class="flex items-center space-x-2">
+                            <input
+                              type="text"
+                              bind:value={editingListName}
+                              on:keydown={handleEditListNameKeyPress}
+                              class="block w-full sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                              placeholder="Nome da lista"
                             >
-                              <div class="py-1" role="menu">
-                                <div class="px-4 py-2 text-xs text-gray-500">
-                                  Compartilhar
-                                </div>
-                                <button
-                                  on:click={() => copyToClipboard(list)}
-                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Copiar conteúdo
-                                </button>
-                                <button
-                                  on:click={() => shareByWhatsApp(list)}
-                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Enviar por WhatsApp
-                                </button>
-                                <button
-                                  on:click={() => shareByEmail(list)}
-                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Enviar por email
-                                </button>
-                                <button
-                                  on:click={() => createGoogleCalendarEvent(list)}
-                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Criar lembrete no Google Agenda
-                                </button>
-                                <div class="border-t border-gray-100"></div>
-                                <button
-                                  on:click={() => {
-                                    shoppingListStore.duplicateList(list.id);
-                                    closeAllMenus();
-                                  }}
-                                  class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Duplicar lista
-                                </button>
-                                <button
-                                  on:click={() => {
-                                    shoppingListStore.deleteList(list.id);
-                                    closeAllMenus();
-                                  }}
-                                  class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                                  role="menuitem"
-                                >
-                                  Excluir lista
-                                </button>
-                              </div>
-                            </div>
-                          {/if}
-                        </div>
-                      </div>
-                      <div class="mt-1">
-                        <p class="text-sm text-gray-500">
-                          Criada em: {formatDate(list.createdAt)}
-                        </p>
-                        <p class="text-sm text-gray-500">
-                          Última atualização: {formatDate(list.updatedAt)}
-                        </p>
-                        <p class="text-sm font-medium text-indigo-600 mt-1">
-                          Total previsto: {formatCurrency(calculateListTotal(list))}
-                        </p>
-                      </div>
-                      <div class="mt-3">
-                        <h5 class="text-sm font-medium text-gray-700">Itens:</h5>
-                        {#if list.items.length === 0}
-                          <p class="text-sm text-gray-500 mt-1">Nenhum item adicionado</p>
+                            <button
+                              on:click={handleEditListName}
+                              class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                              Salvar
+                            </button>
+                            <button
+                              on:click={() => { editingListId = null; editingListName = ''; }}
+                              class="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                              Cancelar
+                            </button>
+                          </div>
                         {:else}
-                          <ul class="mt-2 space-y-2">
-                            {#each list.items.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')) as item}
-                              <li class="flex items-center justify-between">
-                                <div class="flex-1 flex items-center">
-                                  <input
-                                    type="checkbox"
-                                    checked={item.checked}
-                                    on:change={() => shoppingListStore.toggleItemChecked(list.id, item.productId)}
-                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-3"
-                                  >
-                                  <div class="flex-1">
-                                    <span class="text-sm text-gray-900" class:line-through={item.checked} class:text-gray-400={item.checked}>
-                                      {item.name}
-                                    </span>
-                                    <span class="text-sm text-gray-500 ml-2">
-                                      ({formatCurrency(getProductAveragePrice(item.productId))}/un)
-                                    </span>
-                                  </div>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                  <div class="flex items-center">
-                                    <button
-                                      on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, Math.max(1, item.quantity - 1))}
-                                      class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
-                                    >
-                                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-                                      </svg>
-                                    </button>
-                                    <input
-                                      type="number"
-                                      min="1"
-                                      value={item.quantity}
-                                      on:change={(e) => shoppingListStore.updateItemQuantity(list.id, item.productId, parseInt(e.target.value) || 1)}
-                                      class="w-14 text-sm border-gray-300 rounded-md mx-1 text-center"
-                                    >
-                                    <button
-                                      on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, item.quantity + 1)}
-                                      class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
-                                    >
-                                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                                      </svg>
-                                    </button>
-                                  </div>
-                                  <span class="text-sm text-gray-500 w-24 text-right">
-                                    {formatCurrency(getProductAveragePrice(item.productId) * item.quantity)}
+                          <h2 class="text-xl font-medium text-gray-900 truncate">
+                            {list.name}
+                          </h2>
+                        {/if}
+                      </div>
+                      <div class="relative">
+                        <button
+                          on:click={() => toggleMenu(list.id)}
+                          class="p-2 rounded-full hover:bg-gray-100 focus:outline-none"
+                        >
+                          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                          </svg>
+                        </button>
+                        {#if showMenus[list.id]}
+                          <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                            <div class="py-1">
+                              <button
+                                on:click={() => startEditingListName(list)}
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Editar nome
+                              </button>
+                              <button
+                                on:click={() => copyToClipboard(list)}
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Copiar
+                              </button>
+                              <button
+                                on:click={() => shareByEmail(list)}
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Enviar por email
+                              </button>
+                              <button
+                                on:click={() => shareByWhatsApp(list)}
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Enviar por WhatsApp
+                              </button>
+                              <button
+                                on:click={() => shoppingListStore.duplicateList(list.id)}
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Duplicar lista
+                              </button>
+                              <button
+                                on:click={() => shoppingListStore.deleteList(list.id)}
+                                class="w-full text-left px-4 py-2 text-sm text-red-700 hover:bg-gray-100"
+                              >
+                                Excluir lista
+                              </button>
+                            </div>
+                          </div>
+                        {/if}
+                      </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1">
+                      <p class="text-sm text-gray-500">
+                        Criada em: {formatDate(list.createdAt)}
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Última atualização: {formatDate(list.updatedAt)}
+                      </p>
+                      <p class="text-sm font-medium text-indigo-600">
+                        Total previsto: {formatCurrency(calculateListTotal(list))}
+                      </p>
+                    </div>
+
+                    <div class="flex flex-col space-y-2">
+                      <h5 class="text-sm font-medium text-gray-700">Itens:</h5>
+                      {#if list.items.length === 0}
+                        <p class="text-sm text-gray-500">Nenhum item adicionado</p>
+                      {:else}
+                        <ul class="space-y-2">
+                          {#each list.items.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')) as item}
+                            <li class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                              <div class="flex-1 flex items-center">
+                                <input
+                                  type="checkbox"
+                                  checked={item.checked}
+                                  on:change={() => shoppingListStore.toggleItemChecked(list.id, item.productId)}
+                                  class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-3"
+                                >
+                                <div class="flex-1">
+                                  <span class="text-sm text-gray-900" class:line-through={item.checked} class:text-gray-400={item.checked}>
+                                    {item.name}
                                   </span>
+                                  <span class="text-sm text-gray-500 ml-2">
+                                    ({formatCurrency(getProductAveragePrice(item.productId))}/un)
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="flex items-center space-x-2">
+                                <div class="flex items-center">
                                   <button
-                                    on:click={() => shoppingListStore.removeItem(list.id, item.productId)}
-                                    class="text-red-600 hover:text-red-800"
+                                    on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, Math.max(1, item.quantity - 1))}
+                                    class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
                                   >
-                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                                    </svg>
+                                  </button>
+                                  <input
+                                    type="number"
+                                    min="1"
+                                    value={item.quantity}
+                                    on:change={(e) => shoppingListStore.updateItemQuantity(list.id, item.productId, parseInt(e.target.value) || 1)}
+                                    class="w-14 text-sm border-gray-300 rounded-md mx-1 text-center"
+                                  >
+                                  <button
+                                    on:click={() => shoppingListStore.updateItemQuantity(list.id, item.productId, item.quantity + 1)}
+                                    class="p-1 text-gray-500 hover:text-gray-700 focus:outline-none"
+                                  >
+                                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                     </svg>
                                   </button>
                                 </div>
-                              </li>
-                            {/each}
-                          </ul>
-                        {/if}
-                      </div>
-                      <div class="mt-3 flex items-center space-x-2">
-                        <select
-                          class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                          on:change={(e) => {
-                            const product = products.find(p => p.productId === e.target.value);
-                            if (product) {
-                              shoppingListStore.addItem(list.id, product);
-                              e.target.value = '';
-                            }
-                          }}
-                        >
-                          <option value="">Adicionar produto...</option>
-                          {#each products as product}
-                            <option value={product.productId}>{product.name}</option>
-                          {/each}
-                        </select>
-                        <button
-                          on:click={() => toggleSuggestions(list.id)}
-                          class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          title="Ver sugestões de produtos"
-                        >
-                          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                          </svg>
-                        </button>
-                      </div>
-                      {#if showSuggestions[list.id]}
-                        <div class="mt-3">
-                          <h5 class="text-sm font-medium text-gray-700 mb-2">Sugestões baseadas no histórico:</h5>
-                          {#if getSuggestedProducts(list).length === 0}
-                            <p class="text-sm text-gray-500">Nenhuma sugestão disponível no momento.</p>
-                          {:else}
-                            <div class="space-y-2">
-                              {#each getSuggestedProducts(list).slice(0, expandedSuggestions[list.id] ? undefined : 10) as product}
-                                <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
-                                  <div class="flex-1">
-                                    <div class="flex items-center">
-                                      <p class="text-sm font-medium text-gray-900">{product.name}</p>
-                                      <button
-                                        on:click={() => shoppingListStore.toggleFavorite(product.productId)}
-                                        class="ml-2 p-1 text-gray-400 hover:text-yellow-500 focus:outline-none"
-                                        title={product.isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-                                      >
-                                        <svg
-                                          class={`h-4 w-4 ${product.isFavorite ? 'text-yellow-500' : ''}`}
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          fill={product.isFavorite ? "currentColor" : "none"}
-                                          viewBox="0 0 24 24"
-                                          stroke="currentColor"
-                                        >
-                                          <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                                          />
-                                        </svg>
-                                      </button>
-                                    </div>
-                                    <p class="text-xs text-gray-500">
-                                      Última compra: {formatDate(product.lastPurchaseDate)}
-                                      <span class="mx-1">•</span>
-                                      Média: {product.averageDays.toFixed(1)} dias
-                                    </p>
-                                  </div>
-                                  <button
-                                    on:click={() => addSuggestedProduct(list, product)}
-                                    class="ml-4 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                  >
-                                    Adicionar
-                                  </button>
-                                </div>
-                              {/each}
-                              {#if getSuggestedProducts(list).length > 10}
+                                <span class="text-sm text-gray-500 w-24 text-right">
+                                  {formatCurrency(getProductAveragePrice(item.productId) * item.quantity)}
+                                </span>
                                 <button
-                                  on:click={() => toggleExpandSuggestions(list.id)}
-                                  class="mt-2 w-full text-center text-sm text-indigo-600 hover:text-indigo-800"
+                                  on:click={() => shoppingListStore.removeItem(list.id, item.productId)}
+                                  class="text-red-600 hover:text-red-800"
                                 >
-                                  {expandedSuggestions[list.id] ? 'Ver menos sugestões' : `Ver mais ${getSuggestedProducts(list).length - 10} sugestões`}
+                                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                  </svg>
                                 </button>
-                              {/if}
-                            </div>
-                          {/if}
-                        </div>
+                              </div>
+                            </li>
+                          {/each}
+                        </ul>
                       {/if}
                     </div>
+
+                    <div class="flex items-center space-x-2">
+                      <select
+                        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                        on:change={(e) => {
+                          const product = products.find(p => p.productId === e.target.value);
+                          if (product) {
+                            shoppingListStore.addItem(list.id, product);
+                            e.target.value = '';
+                          }
+                        }}
+                      >
+                        <option value="">Adicionar produto...</option>
+                        {#each products as product}
+                          <option value={product.productId}>{product.name}</option>
+                        {/each}
+                      </select>
+                      <button
+                        on:click={() => toggleSuggestions(list.id)}
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        title="Ver sugestões de produtos"
+                      >
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {#if showSuggestions[list.id]}
+                      <div class="mt-2">
+                        <h5 class="text-sm font-medium text-gray-700 mb-2">Sugestões baseadas no histórico:</h5>
+                        {#if getSuggestedProducts(list).length === 0}
+                          <p class="text-sm text-gray-500">Nenhuma sugestão disponível no momento.</p>
+                        {:else}
+                          <div class="space-y-2">
+                            {#each getSuggestedProducts(list).slice(0, expandedSuggestions[list.id] ? undefined : 10) as product}
+                              <div class="flex items-center justify-between bg-gray-50 p-2 rounded-md">
+                                <div class="flex-1">
+                                  <div class="flex items-center">
+                                    <p class="text-sm font-medium text-gray-900">{product.name}</p>
+                                    <button
+                                      on:click={() => shoppingListStore.toggleFavorite(product.productId)}
+                                      class="ml-2 p-1 text-gray-400 hover:text-yellow-500 focus:outline-none"
+                                      title={product.isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                                    >
+                                      <svg
+                                        class={`h-4 w-4 ${product.isFavorite ? 'text-yellow-500' : ''}`}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill={product.isFavorite ? "currentColor" : "none"}
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                      >
+                                        <path
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                                        />
+                                      </svg>
+                                    </button>
+                                  </div>
+                                  <p class="text-xs text-gray-500">
+                                    Última compra: {formatDate(product.lastPurchaseDate)}
+                                    <span class="mx-1">•</span>
+                                    Média: {product.averageDays.toFixed(1)} dias
+                                  </p>
+                                </div>
+                                <button
+                                  on:click={() => addSuggestedProduct(list, product)}
+                                  class="ml-4 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                  Adicionar
+                                </button>
+                              </div>
+                            {/each}
+                            {#if getSuggestedProducts(list).length > 10}
+                              <button
+                                on:click={() => toggleExpandSuggestions(list.id)}
+                                class="mt-2 w-full text-center text-sm text-indigo-600 hover:text-indigo-800"
+                              >
+                                {expandedSuggestions[list.id] ? 'Ver menos sugestões' : `Ver mais ${getSuggestedProducts(list).length - 10} sugestões`}
+                              </button>
+                            {/if}
+                          </div>
+                        {/if}
+                      </div>
+                    {/if}
                   </div>
                 </li>
               {/each}

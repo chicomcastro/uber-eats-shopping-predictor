@@ -127,6 +127,17 @@ function createShoppingListStore() {
                 }
             });
             saveToStorage();
+        },
+        updateListName: (listId, newName) => {
+            update(state => {
+                const list = state.lists.find(l => l.id === listId);
+                if (list) {
+                    list.name = newName;
+                    list.updatedAt = new Date().toISOString();
+                }
+                return { ...state, lists: [...state.lists] };
+            });
+            saveToStorage();
         }
     };
 
